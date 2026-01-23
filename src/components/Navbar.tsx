@@ -6,9 +6,12 @@ const Navbar: React.FC = () => {
   const [showSticky, setShowSticky] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
-  const [pathname, setPathname] = useState("");
+  const [pathname, setPathname] = useState(() =>
+    typeof window !== "undefined" ? window.location.pathname : "",
+  );
 
   useEffect(() => {
+    // Initial sync
     setPathname(window.location.pathname);
 
     const handleScroll = () => {
@@ -17,9 +20,19 @@ const Navbar: React.FC = () => {
       setShowSticky(scrollY > 500);
     };
 
+    const handleNavigation = () => {
+      setPathname(window.location.pathname);
+    };
+
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    // Use astro:page-load which is more reliable for View Transitions
+    document.addEventListener("astro:page-load", handleNavigation);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("astro:page-load", handleNavigation);
+    };
   }, []);
 
   const serviceItems = [
