@@ -73,7 +73,7 @@ const Services: React.FC = () => {
             কি করি আমরা
           </h2>
           <h3 className="text-5xl md:text-7xl font-display font-bold text-slate-900 mb-6">
-            বিজনেসের জন্য <span className="text-red-600 italic">পারফেক্ট</span>{" "}
+            বিজনেসের জন্য <span className="text-red-600">পারফেক্ট</span>{" "}
             সল্যুশন।
           </h3>
           <p className="text-slate-400 text-lg font-medium max-w-2xl mx-auto">
