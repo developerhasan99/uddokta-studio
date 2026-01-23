@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero';
+import Clients from '../components/Clients';
+import About from '../components/About';
+import Services from '../components/Services';
+import Process from '../components/Process';
+import Portfolio from '../components/Portfolio';
+import Reviews from '../components/Reviews';
+import Contact from '../components/Contact';
+---
+
+<Layout title="উদ্যোক্তা স্টুডিও | প্রিমিয়াম ডিজিটাল ইনোভেশন">
+	<div class="flex flex-col">
+		<Hero client:load />
+		<Clients client:visible />
+		<div id="about"><About client:visible /></div>
+		<div id="services"><Services client:visible /></div>
+		<div id="process"><Process client:visible /></div>
+		<div id="portfolio"><Portfolio client:visible /></div>
+		<div id="reviews"><Reviews client:visible /></div>
+		<div id="contact"><Contact client:visible /></div>
+	</div>
+</Layout>

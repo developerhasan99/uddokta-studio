@@ -1,0 +1,69 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PortfolioGallery from '../components/PortfolioGallery';
+import { Sparkles, ArrowUpRight } from 'lucide-react';
+---
+
+<Layout title="পোর্টফোলিও | উদ্যোক্তা স্টুডিও">
+	<div class="pt-20">
+		{/* Hero Header */}
+		<section class="relative py-32 md:py-48 bg-white overflow-hidden">
+			<div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+				<div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-red-100 bg-red-50 text-red-600 text-xs font-bold uppercase tracking-widest mb-10">
+					<Sparkles size={14} class="fill-current" />
+					<span>সফল প্রজেক্টসমূহ</span>
+				</div>
+				<h1 class="text-6xl md:text-[8rem] font-display font-bold text-slate-900 mb-10 leading-[1] tracking-tight">
+					আমাদের <span class="text-red-600 italic">কাজ।</span>
+				</h1>
+				<p class="text-xl md:text-2xl text-slate-500 font-medium max-w-2xl mx-auto">
+					পিক্সেল-পারফেক্ট ডিজাইন এবং শক্তিশালী কোডিংয়ের সমন্বয়ে আমরা গড়ে তুলেছি অসংখ্য ব্র্যান্ডের ডিজিটাল যাত্রা।
+				</p>
+			</div>
+			
+			<div class="absolute top-0 right-0 w-1/3 h-full bg-red-500/5 -skew-x-12 translate-x-20 -z-10"></div>
+			<div class="absolute bottom-0 left-0 w-1/4 h-1/2 bg-slate-500/5 blur-[120px] -z-10"></div>
+		</section>
+
+		<PortfolioGallery client:load />
+
+		{/* Impact Stats */}
+		<section class="py-24 bg-white border-b border-slate-50">
+			<div class="max-w-7xl mx-auto px-6">
+				<div class="grid grid-cols-2 lg:grid-cols-4 gap-12">
+					{[
+						{ val: "৫০০+", label: "প্রজেক্ট সম্পন্ন" },
+						{ val: "৯৯%", label: "সন্তুষ্ট গ্রাহক" },
+						{ val: "১৫+", label: "অভিজ্ঞ ডিজাইনার" },
+						{ val: "২৪/৭", label: "সাপোর্ট সিস্টেম" }
+					].map((stat) => (
+						<div class="text-center">
+							<p class="text-5xl font-display font-bold text-slate-900 mb-2">{stat.val}</p>
+							<p class="text-xs font-bold text-red-600 uppercase tracking-widest">{stat.label}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		{/* Final CTA */}
+		<section class="py-40 bg-white relative overflow-hidden">
+			<div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+				<h2 class="text-5xl md:text-7xl font-display font-bold text-slate-900 mb-12">
+					আপনার পরবর্তী <br /> সাকসেস স্টোরি <span class="text-red-600 italic">শুরু হোক।</span>
+				</h2>
+				<p class="text-xl text-slate-500 font-medium mb-16 max-w-2xl mx-auto leading-relaxed">
+					আমরা প্রস্তুত আপনার আইডিয়াকে বাস্তবে রূপান্তর করতে। আজই আমাদের সাথে আলোচনা শুরু করুন।
+				</p>
+				<a 
+					href="/contact"
+					class="inline-flex items-center gap-4 bg-slate-900 text-white px-12 py-6 rounded-3xl text-xl font-bold shadow-2xl shadow-black/20 hover:bg-red-600 transition-all"
+				>
+					কোলাবোরেশন শুরু করুন <ArrowUpRight size={24} />
+				</a>
+			</div>
+			
+			<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-600/5 rounded-full blur-[120px] -z-10"></div>
+		</section>
+	</div>
+</Layout>

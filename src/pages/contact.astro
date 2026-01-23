@@ -1,0 +1,134 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/Contact';
+import { Mail, Phone, MapPin, MessageCircle, Sparkles, ChevronRight } from 'lucide-react';
+
+const supportChannels = [
+	{
+		title: "সরাসরি ফোন",
+		info: "+৮৮০ ১৭১২-৩৪৫৬৭৮",
+		icon: Phone,
+		action: "কল করুন",
+		link: "tel:+8801712345678"
+	},
+	{
+		title: "ইমেইল সাপোর্ট",
+		info: "hello@uddokta.studio",
+		icon: Mail,
+		action: "ইমেইল লিখুন",
+		link: "mailto:hello@uddokta.studio"
+	},
+	{
+		title: "হোয়াটসঅ্যাপ",
+		info: "দ্রুত উত্তরের জন্য",
+		icon: MessageCircle,
+		action: "চ্যাট শুরু করুন",
+		link: "https://wa.me/8801712345678"
+	}
+];
+
+const faqs = [
+	{
+		q: "একটি ওয়েবসাইট তৈরিতে কতদিন সময় লাগে?",
+		a: "প্রজেক্টের জটিলতা অনুযায়ী সাধারণত ২ থেকে ৪ সপ্তাহ সময় লাগে।"
+	},
+	{
+		q: "আপনারা কি পেমেন্ট কিস্তিতে গ্রহণ করেন?",
+		a: "হ্যাঁ, আমরা ৫০% অগ্রিম এবং বাকি ৫০% কাজ শেষে গ্রহণ করি। বড় প্রজেক্টের ক্ষেত্রে ৩টি কিস্তির সুবিধা আছে।"
+	},
+	{
+		q: "ডোমেইন এবং হোস্টিং কি আপনারা প্রোভাইড করেন?",
+		a: "জি, আমাদের প্যাকেজের সাথেই হাই-স্পিড হোস্টিং এবং ডোমেইন অন্তর্ভুক্ত থাকে।"
+	}
+];
+---
+
+<Layout title="যোগাযোগ | উদ্যোক্তা স্টুডিও">
+	<div class="pt-20">
+		{/* Hero Header */}
+		<section class="relative py-32 md:py-40 bg-white overflow-hidden">
+			<div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+				<div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-red-100 bg-red-50 text-red-600 text-xs font-bold uppercase tracking-widest mb-10">
+					<Sparkles size={14} class="fill-current" />
+					<span>যোগাযোগ করুন</span>
+				</div>
+				<h1 class="text-6xl md:text-8xl font-display font-bold text-slate-900 mb-8 tracking-tight">
+					আসুন কথা <span class="text-red-600 italic">বলি।</span>
+				</h1>
+				<p class="text-xl md:text-2xl text-slate-500 font-medium max-w-2xl mx-auto">
+					আপনার আইডিয়াকে বাস্তবে রূপান্তর করতে আমরা প্রস্তুত। আমাদের টিমের সাথে কথা বলে আজই শুরু করুন আপনার ডিজিটাল যাত্রা।
+				</p>
+			</div>
+			
+			<div class="absolute top-0 right-0 w-1/3 h-full bg-red-500/5 -skew-x-12 translate-x-20 -z-10"></div>
+			<div class="absolute bottom-0 left-0 w-1/4 h-1/2 bg-slate-500/5 blur-[120px] -z-10"></div>
+		</section>
+
+		{/* Quick Contact Grid */}
+		<section class="py-20 bg-slate-50">
+			<div class="max-w-7xl mx-auto px-6">
+				<div class="grid md:grid-cols-3 gap-8">
+					{supportChannels.map((channel) => (
+						<a
+							href={channel.link}
+							class="p-10 rounded-[3rem] bg-white border border-slate-100 hover:border-red-600/20 transition-all group shadow-sm hover:shadow-2xl hover:shadow-red-600/5 block"
+						>
+							<div class="w-16 h-16 rounded-2xl bg-red-50 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+								<channel.icon size={32} class="text-red-600" />
+							</div>
+							<h4 class="text-xl font-bold text-slate-900 mb-2">{channel.title}</h4>
+							<p class="text-slate-500 font-medium mb-6">{channel.info}</p>
+							<div class="flex items-center gap-2 text-red-600 font-bold text-sm uppercase tracking-widest">
+								{channel.action} <ChevronRight size={16} />
+							</div>
+						</a>
+					))}
+				</div>
+			</div>
+		</section>
+
+		{/* Main Contact Section */}
+		<ContactForm client:visible />
+
+		{/* FAQ Section */}
+		<section class="py-32 bg-white">
+			<div class="max-w-4xl mx-auto px-6">
+				<div class="text-center mb-20">
+					<h2 class="text-red-600 font-bold uppercase tracking-widest text-xs mb-6">সচরাচর জিজ্ঞাসা</h2>
+					<h3 class="text-4xl md:text-5xl font-display font-bold text-slate-900">কিছু জরুরি <span class="text-red-600 italic">প্রশ্ন।</span></h3>
+				</div>
+				<div class="space-y-6">
+					{faqs.map((faq) => (
+						<div 
+							class="p-8 rounded-[2rem] bg-slate-50 border border-slate-100"
+						>
+							<h4 class="text-xl font-bold text-slate-900 mb-4">{faq.q}</h4>
+							<p class="text-slate-500 font-medium leading-relaxed">{faq.a}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		{/* Location Bar */}
+		<section class="py-12 bg-slate-900 text-white overflow-hidden">
+			<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-10">
+				<div class="flex items-center gap-6">
+					<div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-red-500">
+						<MapPin size={24} />
+					</div>
+					<div>
+						<p class="text-xs text-white/50 uppercase tracking-widest">আমাদের ঠিকানা</p>
+						<p class="text-lg font-bold">উত্তরা সেক্টর ১১, ঢাকা ১২৩০</p>
+					</div>
+				</div>
+				<div 
+					class="flex items-center gap-4 text-red-500 font-bold italic"
+				>
+					<Sparkles size={20} />
+					সরাসরি দেখা করার জন্য অ্যাপয়েন্টমেন্ট নিন
+				</div>
+			</div>
+		</section>
+	</div>
+</Layout>

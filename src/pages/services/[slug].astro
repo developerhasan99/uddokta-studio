@@ -1,0 +1,227 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Target, Palette, Code, Smartphone, Rocket, BrainCircuit, Sparkles, ArrowRight, CheckCircle2, Zap, BarChart3, Globe, LayoutGrid, Shield } from 'lucide-react';
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: 'digital-strategy' } },
+    { params: { slug: 'ui-ux-design' } },
+    { params: { slug: 'web-development' } },
+    { params: { slug: 'app-solution' } },
+    { params: { slug: 'brand-growth' } },
+    { params: { slug: 'ecommerce-solution' } },
+  ];
+}
+
+const { slug } = Astro.params;
+
+const servicesContent = {
+  'digital-strategy': {
+    title: "ডিজিটাল কৌশল",
+    subtitle: "Digital Strategy",
+    icon: Target,
+    heroText: "আপনার বিজনেসের সফলতার <span class='text-red-600 italic'>মাস্টারপ্ল্যান।</span>",
+    description: "আমরা কেবল ওয়েবসাইট বানাই না, আমরা আপনার বিজনেসের জন্য একটি দীর্ঘমেয়াদী ডিজিটাল রোডম্যাপ তৈরি করি যা আপনাকে প্রতিযোগিতায় এগিয়ে রাখবে।",
+    features: [
+      { title: "মার্কেট রিসার্চ", desc: "আপনার অডিয়েন্সের পছন্দ এবং মার্কেট ট্রেন্ড বিশ্লেষণ।", icon: BarChart3 },
+      { title: "ব্র্যান্ড পজিশনিং", desc: "মার্কেটে আপনার ব্র্যান্ডকে কীভাবে অনন্য হিসেবে তুলে ধরা যায়।", icon: Globe },
+      { title: "গ্রোথ হ্যাকিং", desc: "কম খরচে দ্রুত কাস্টমার পাওয়ার কার্যকর কৌশল।", icon: Zap }
+    ],
+    process: [
+      { step: "০১", title: "বিশ্লেষণ", desc: "আপনার বর্তমান অবস্থা এবং লক্ষ্য বোঝা।" },
+      { step: "০২", title: "প্ল্যানিং", desc: "সৃজনশীল এবং টেকনিক্যাল স্ট্র্যাটেজি তৈরি।" },
+      { step: "০৩", title: "ইমপ্লিমেন্টেশন", desc: "কৌশলগুলো ধাপে ধাপে কার্যকর করা।" }
+    ]
+  },
+  'ui-ux-design': {
+    title: "ইউআই/ইউএক্স ডিজাইন",
+    subtitle: "UI/UX Design",
+    icon: Palette,
+    heroText: "মানুষের মন জয় করার মতো <span class='text-red-600 italic'>অভিজ্ঞতা।</span>",
+    description: "আমরা এমন ডিজাইন করি যা দেখতে সুন্দর এবং ব্যবহার করা সহজ। প্রতিটি পিক্সেল আমরা সাজাই কাস্টমারের কথা মাথায় রেখে।",
+    features: [
+      { title: "ইউজার রিসার্চ", desc: "মানুষের ব্যবহারের ধরণ বুঝে লেআউট তৈরি।", icon: Target },
+      { title: "প্রোটোটাইপিং", desc: "ফাইনাল ডিজাইনের আগে ইন্টারেক্টিভ খসড়া।", icon: Sparkles },
+      { title: "মডার্ন এসথেটিক্স", desc: "বিশ্বমানের ট্রেন্ডি এবং প্রিমিয়াম লুক।", icon: Palette }
+    ],
+    process: [
+      { step: "০১", title: "ওয়্যারফ্রেম", desc: "কাঠামোগত ব্লুপ্রিন্ট তৈরি করা।" },
+      { step: "০২", title: "ভিজ্যুয়াল", desc: "রং ও এলিমেন্ট দিয়ে পূর্ণতা দেওয়া।" },
+      { step: "০৩", title: "টেস্টিং", desc: "ইউজার ফিডব্যাকের ভিত্তিতে নিখুঁত করা।" }
+    ]
+  },
+  'web-development': {
+    title: "ওয়েব ডেভেলপমেন্ট",
+    subtitle: "Web Development",
+    icon: Code,
+    heroText: "শক্তিশালী এবং হাই-পারফরম্যান্স <span class='text-red-600 italic'>ওয়েবসাইট।</span>",
+    description: "লেটেস্ট টেকনোলজি ব্যবহার করে আমরা তৈরি করি সুপার-ফাস্ট এবং সিকিউর ওয়েবসাইট। মোবাইল থেকে ডেস্কটপ—সবখানে আপনার সাইট থাকবে সেরা।",
+    features: [
+      { title: "ফুল রেসপন্সিভ", desc: "সব ডিভাইসে সাইটটি অটোমেটিক অ্যাডজাস্ট হবে।", icon: Smartphone },
+      { title: "এসইও ফ্রেন্ডলি", desc: "গুগল সার্চে উপরে থাকার মতো ক্লিন কোডিং।", icon: Target },
+      { title: "কাস্টম সিএমএস", desc: "সহজে কন্টেন্ট পরিবর্তন করার ড্যাশবোর্ড।", icon: LayoutGrid }
+    ],
+    process: [
+      { step: "০১", title: "আর্কিটেকচার", desc: "ডেটাবেস এবং ফাংশনালিটি প্ল্যান।" },
+      { step: "০২", title: "কোডিং", desc: "ক্লিন এবং অপ্টিমাইজড ডেভেলপমেন্ট।" },
+      { step: "০৩", title: "লঞ্চ", desc: "হোস্টিং সেটআপ এবং লাইভ করা।" }
+    ]
+  },
+  'app-solution': {
+    title: "অ্যাপ সল্যুশন",
+    subtitle: "App Solution",
+    icon: Smartphone,
+    heroText: "কাস্টমারের পকেটে আপনার <span class='text-red-600 italic'>বিজনেস।</span>",
+    description: "আইওএস এবং অ্যান্ড্রয়েড—দুই প্ল্যাটফর্মের জন্যই আমরা তৈরি করি ফিচার-রিচ মোবাইল অ্যাপ। আপনার স্বপ্নকে নিয়ে আসুন ফোনের স্ক্রিনে।",
+    features: [
+      { title: "নেটিভ পারফরম্যান্স", desc: "দ্রুত এবং স্মুথ ইউজার ইন্টারফেস।", icon: Zap },
+      { title: "পুশ নোটিফিকেশন", desc: "কাস্টমারের সাথে সরাসরি কানেক্ট থাকার উপায়।", icon: Rocket },
+      { title: "সিকিউর পেমেন্ট", desc: "সব ধরণের অনলাইন পেমেন্ট গেটওয়ে সাপোর্ট।", icon: Shield }
+    ],
+    process: [
+      { step: "০১", title: "কনসেপ্ট", desc: "অ্যাপের মূল লক্ষ্য এবং ইউজার ফ্লো।" },
+      { step: "০২", title: "বিল্ড", desc: "ফ্রন্টেন্ড এবং ব্যাকেন্ড ইন্টিগ্রেশন।" },
+      { step: "০৩", title: "স্টোর লঞ্চ", desc: "প্লে-স্টোর ও অ্যাপ-স্টোরে পাবলিশ।" }
+    ]
+  },
+  'brand-growth': {
+    title: "ব্র্যান্ড গ্রোথ",
+    subtitle: "Brand Growth",
+    icon: Rocket,
+    heroText: "ডিজিটাল দুনিয়ায় আপনার ব্র্যান্ডের <span class='text-red-600 italic'>জয়যাত্রা।</span>",
+    description: "আপনার পরিচিতি কেবল উত্তরা পর্যন্ত নয়, পুরো বাংলাদেশে ছড়িয়ে দেওয়ার দায়িত্ব আমাদের। সঠিক সময়ে সঠিক মানুষের কাছে পৌঁছান।",
+    features: [
+      { title: "সোশ্যাল মিডিয়া", desc: "ফেসবুক ও ইনস্টাগ্রামে কার্যকর উপস্থিতি।", icon: Globe },
+      { title: "কন্টেন্ট স্ট্র্যাটেজি", desc: "এমন কন্টেন্ট যা সেলস বাড়াতে সাহায্য করে।", icon: Palette },
+      { title: "অ্যাডস ম্যানেজমেন্ট", desc: "টার্গেটেড বিজ্ঞাপনের মাধ্যমে সর্বোচ্চ রিটার্ন।", icon: BarChart3 }
+    ],
+    process: [
+      { step: "০১", title: "অডিট", desc: "ব্র্যান্ডের বর্তমান অবস্থা যাচাই।" },
+      { step: "০২", title: "ক্যাম্পেইন", desc: "সৃজনশীল বিজ্ঞাপনের মাধ্যমে প্রচার।" },
+      { step: "০৩", title: "স্কেলিং", desc: "ক্রমাগত সফলতার ভিত্তিতে বাজেট বাড়ানো।" }
+    ]
+  },
+  'ecommerce-solution': {
+    title: "ই-কমার্স সল্যুশন",
+    subtitle: "E-commerce Solution",
+    icon: BrainCircuit,
+    heroText: "আপনার অনলাইন দোকানকে রূপান্তর করুন <span class='text-red-600 italic'>মেশিনে।</span>",
+    description: "অর্ডার ম্যানেজমেন্ট থেকে শুরু করে ইনভেন্টরি ট্র্যাকিং—সবকিছু হবে এক জায়গায়। কাস্টমারকে দিন সহজ কেনাকাটার অভিজ্ঞতা।",
+    features: [
+      { title: "ইনভেন্টরি ট্র্যাকিং", desc: "স্টক ম্যানেজমেন্ট হবে একদম অটোমেটিক।", icon: CheckCircle2 },
+      { title: "কনভার্সন অপ্টিমাইজড", desc: "বেশি বিক্রির জন্য বিশেষ ধরণের লেআউট।", icon: Zap },
+      { title: "কুরিয়ার ইন্টিগ্রেশন", desc: "অর্ডার হওয়ার সাথে সাথে ডেলিভারি রিকোয়েস্ট।", icon: Rocket }
+    ],
+    process: [
+      { step: "০১", title: "স্ট্রাকচার", desc: "ক্যাটাগরি এবং প্রোডাক্ট লিস্টিং।" },
+      { step: "০২", title: "সিস্টেম", desc: "পেমেন্ট এবং ডেলিভারি কানেক্ট করা।" },
+      { step: "০৩", title: "গো-লাইভ", desc: "মার্কেটিং সাপোর্টসহ দোকান চালু।" }
+    ]
+  }
+};
+
+const data = servicesContent[slug];
+---
+
+<Layout title={`${data.title} | উদ্যোক্তা স্টুডিও`}>
+  <div class="pt-20">
+    {/* Hero Header */}
+    <section class="relative py-32 md:py-48 bg-white overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-red-100 bg-red-50 text-red-600 text-xs font-bold uppercase tracking-widest mb-10">
+          <Sparkles size={14} class="fill-current" />
+          <span>{data.subtitle}</span>
+        </div>
+        
+        <div class="flex flex-col lg:flex-row gap-16 items-start justify-between">
+          <div class="lg:w-7/12">
+            <h1 
+              set:html={data.heroText}
+              class="text-6xl md:text-8xl font-display font-bold text-slate-900 mb-10 leading-[1.05] tracking-tight"
+            />
+            <p class="text-xl md:text-2xl text-slate-500 font-medium leading-relaxed max-w-2xl">
+              {data.description}
+            </p>
+          </div>
+          
+          <div class="lg:w-4/12 flex justify-center lg:justify-end">
+            <div class="w-48 h-48 md:w-64 md:h-64 rounded-[4rem] bg-red-600 text-white flex items-center justify-center shadow-2xl shadow-red-600/20 rotate-6 hover:rotate-0 transition-transform duration-500">
+              <data.icon size={64} />
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Decorative elements */}
+      <div class="absolute top-0 right-0 w-1/3 h-full bg-red-500/5 -skew-x-12 translate-x-20 -z-10"></div>
+      <div class="absolute bottom-0 left-0 w-1/4 h-1/2 bg-slate-500/5 blur-[120px] -z-10"></div>
+    </section>
+
+    {/* Features Grid */}
+    <section class="py-32 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-10">
+          {data.features.map((feature) => (
+            <div class="p-12 rounded-[3.5rem] bg-white border border-slate-100 hover:shadow-2xl hover:shadow-red-600/5 transition-all group">
+              <div class="w-16 h-16 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center mb-10 group-hover:scale-110 transition-transform">
+                <feature.icon size={32} />
+              </div>
+              <h4 class="text-2xl font-bold text-slate-900 mb-4">{feature.title}</h4>
+              <p class="text-slate-500 font-medium leading-relaxed">{feature.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Process Section */}
+    <section class="py-32 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col lg:flex-row gap-20 items-center">
+          <div class="lg:w-5/12">
+            <h2 class="text-red-600 font-bold uppercase tracking-widest text-xs mb-6">কিভাবে কাজ করি</h2>
+            <h3 class="text-5xl font-display font-bold text-slate-900 mb-10">পদ্ধতিগত <span class="text-red-600 italic">নির্ভুলতা।</span></h3>
+            <p class="text-xl text-slate-500 font-medium leading-relaxed">প্রতিটি প্রজেক্টে আমরা একটি কঠোর চেইন অফ কমান্ড মেনে চলি যা ফলাফল নিশ্চিত করে।</p>
+          </div>
+          <div class="lg:w-7/12 grid gap-10">
+            {data.process.map((step) => (
+              <div class="flex gap-10 items-start group">
+                <div class="text-4xl font-display font-black text-red-100 group-hover:text-red-600 transition-colors shrink-0">
+                  {step.step}
+                </div>
+                <div class="pt-2">
+                  <h4 class="text-2xl font-bold text-slate-900 mb-2">{step.title}</h4>
+                  <p class="text-slate-500 font-medium">{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* CTA Section */}
+    <section class="py-40 bg-slate-900 text-white overflow-hidden relative border-t border-white/5">
+      <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+        <h2 class="text-5xl md:text-7xl font-display font-bold mb-12">
+          চলুন আপনার প্রজেক্টটি <br /> <span class="text-red-600 italic">শুরু করি।</span>
+        </h2>
+        <p class="text-xl text-white/50 font-medium mb-16 max-w-2xl mx-auto">
+          {data.title} নিয়ে আপনার কোনো জিজ্ঞাসা থাকলে আজই আমাদের সাথে ফ্রি কন্সালটেশন সেশন বুক করুন।
+        </p>
+        <a 
+          href="/contact"
+          class="inline-flex items-center gap-4 bg-red-600 text-white px-12 py-6 rounded-3xl text-xl font-bold shadow-2xl shadow-red-600/20 hover:bg-white hover:text-red-600 transition-all"
+        >
+          আলোচনা শুরু করি <ArrowRight size={24} />
+        </a>
+      </div>
+      
+      {/* Abstract background */}
+      <div class="absolute top-0 left-0 w-full h-full opacity-10">
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-red-600 rounded-full blur-[200px] -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-red-600 rounded-full blur-[200px] translate-y-1/2 -translate-x-1/2"></div>
+      </div>
+    </section>
+  </div>
+</Layout>
