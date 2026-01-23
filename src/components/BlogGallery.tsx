@@ -10,76 +10,31 @@ const categories = [
   "উদ্যোক্তা জীবন",
 ];
 
-const blogPosts = [
-  {
-    id: 1,
-    title: "২০২৪ সালে ই-কমার্স বিজনেসের ৫টি জরুরি ট্রেন্ড",
-    excerpt:
-      "বাংলাদেশের ই-কমার্স মার্কেট দ্রুত পাল্টাচ্ছে। আপনি যদি নতুন উদ্যোক্তা হয়ে থাকেন, তবে এই ৫টি ট্রেন্ড সম্পর্কে জানা আপনার জন্য বাধ্যতামূলক...",
-    category: "বিজনেস কৌশল",
-    date: "মে ১৫, ২০২৪",
-    readTime: "৫ মিনিট",
-    image:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800",
-    author: "জনি হোসাইন",
-  },
-  {
-    id: 2,
-    title: "কেন মিনিমালিস্ট ডিজাইন আপনার ব্র্যান্ডের সেলস বাড়াবে?",
-    excerpt:
-      "ডিজাইন মানে কেবল রং নয়, ডিজাইন মানে সমস্যার সমাধান। মিনিমালিস্ট ডিজাইন কীভাবে কাস্টমারের ট্রাস্ট অর্জন করে তা নিয়ে আমাদের আজকের আলোচনা...",
-    category: "ডিজাইন",
-    date: "মে ১২, ২০২৪",
-    readTime: "৪ মিনিট",
-    image:
-      "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800",
-    author: "সায়মা আহমেদ",
-  },
-  {
-    id: 3,
-    title: "স্মল বিজনেসের জন্য এআই টুলস: যেভাবে খরচ কমাবেন",
-    excerpt:
-      "অটোমেশন কেবল বড় কোম্পানিগুলোর জন্য নয়। চ্যাটজিপিটি থেকে শুরু করে ক্যানভা এআই—ক্ষুদ্র উদ্যোক্তারা কীভাবে এগুলো ব্যবহার করে সময় বাঁচাতে পারেন...",
-    category: "টেকনোলজি",
-    date: "মে ১০, ২০২৪",
-    readTime: "৭ মিনিট",
-    image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
-    author: "রাকিব হাসান",
-  },
-  {
-    id: 4,
-    title: "ব্যর্থতা থেকে শিক্ষা: একজন সফল উদ্যোক্তার গল্প",
-    excerpt:
-      "স্বপ্ন দেখার শুরুটা ছিল খুব কঠিন। ৩টি প্রজেক্ট ফেল করার পর কীভাবে আমরা আজকের এই অবস্থায় আসলাম, সেই অদেখা গল্পটি আজ শেয়ার করছি...",
-    category: "উদ্যোক্তা জীবন",
-    date: "মে ০৫, ২০২৪",
-    readTime: "৬ মিনিট",
-    image:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800",
-    author: "জনি হোসাইন",
-  },
-  {
-    id: 5,
-    title: "ডিজিটাল পেমেন্ট গেটওয়ে: আপনার দোকানের জন্য কোনটি সেরা?",
-    excerpt:
-      "বিকাশ, রকেট নাকি অনলাইন কার্ড পেমেন্ট? বাংলাদেশের প্রেক্ষাপটে পেমেন্ট গেটওয়ে চুজ করার ক্ষেত্রে যে বিষয়গুলো খেয়াল রাখবেন...",
-    category: "টেকনোলজি",
-    date: "এপ্রিল ২৮, ২০২৪",
-    readTime: "৫ মিনিট",
-    image:
-      "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&q=80&w=800",
-    author: "রাকিব হাসান",
-  },
-];
+interface BlogPost {
+  slug: string;
+  data: {
+    title: string;
+    description: string;
+    pubDate: string;
+    author: string;
+    image: string;
+    category: string;
+    readTime: string;
+  };
+}
 
-const BlogGallery: React.FC = () => {
+interface BlogGalleryProps {
+  posts: BlogPost[];
+}
+
+const BlogGallery: React.FC<BlogGalleryProps> = ({ posts }) => {
   const [activeTab, setActiveTab] = useState("সব খবর");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredPosts = blogPosts.filter((post) => {
-    const matchesTab = activeTab === "সব খবর" || post.category === activeTab;
-    const matchesSearch = post.title
+  const filteredPosts = posts.filter((post) => {
+    const matchesTab =
+      activeTab === "সব খবর" || post.data.category === activeTab;
+    const matchesSearch = post.data.title
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
     return matchesTab && matchesSearch;
@@ -134,7 +89,7 @@ const BlogGallery: React.FC = () => {
             <AnimatePresence mode="popLayout">
               {filteredPosts.map((post) => (
                 <motion.div
-                  key={post.id}
+                  key={post.slug}
                   layout
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -143,41 +98,41 @@ const BlogGallery: React.FC = () => {
                   className="group flex flex-col h-full"
                 >
                   <a
-                    href={`/blog/${post.id}`}
+                    href={`/blog/${post.slug}`}
                     className="block relative aspect-[4/3] rounded-[3rem] overflow-hidden bg-white mb-8 shadow-sm group-hover:shadow-2xl transition-all duration-700"
                   >
                     <img
-                      src={post.image}
-                      alt={post.title}
+                      src={post.data.image}
+                      alt={post.data.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                     />
                     <div className="absolute top-6 left-6 px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-sm text-red-600 text-[10px] font-bold uppercase tracking-widest shadow-lg">
-                      {post.category}
+                      {post.data.category}
                     </div>
                   </a>
 
                   <div className="px-4 flex-grow">
                     <div className="flex items-center gap-4 text-slate-400 text-xs font-bold uppercase tracking-widest mb-4">
                       <div className="flex items-center gap-1.5">
-                        <Calendar size={14} /> {post.date}
+                        <Calendar size={14} /> {post.data.pubDate}
                       </div>
                       <div className="flex items-center gap-1.5">
-                        <Clock size={14} /> {post.readTime}
+                        <Clock size={14} /> {post.data.readTime}
                       </div>
                     </div>
 
-                    <a href={`/blog/${post.id}`}>
+                    <a href={`/blog/${post.slug}`}>
                       <h4 className="text-3xl font-display font-bold text-slate-900 group-hover:text-red-600 transition-colors mb-4 leading-tight">
-                        {post.title}
+                        {post.data.title}
                       </h4>
                     </a>
 
                     <p className="text-slate-500 font-medium line-clamp-2 mb-8 leading-relaxed">
-                      {post.excerpt}
+                      {post.data.description}
                     </p>
 
                     <a
-                      href={`/blog/${post.id}`}
+                      href={`/blog/${post.slug}`}
                       className="inline-flex items-center gap-2 text-red-600 font-bold text-sm uppercase tracking-widest group-hover:gap-4 transition-all"
                     >
                       পড়ুন <ArrowUpRight size={18} />

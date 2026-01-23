@@ -1,54 +1,86 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import BlogGallery from '../../components/BlogGallery';
-import { Search, Sparkles } from 'lucide-react';
+import Layout from "../../layouts/Layout.astro";
+import BlogGallery from "../../components/BlogGallery";
+import { Search, Sparkles } from "lucide-react";
+import { getCollection } from "astro:content";
+
+const allPosts = await getCollection("blog");
 ---
 
 <Layout title="ব্লগ | উদ্যোক্তা স্টুডিও">
-	<div class="pt-20">
-		{/* Editorial Header */}
-		<section class="relative py-32 md:py-48 bg-white overflow-hidden">
-			<div class="max-w-7xl mx-auto px-6 relative z-10">
-				<div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-red-100 bg-red-50 text-red-600 text-xs font-bold uppercase tracking-widest mb-10">
-					<Sparkles size={14} class="fill-current" />
-					<span>আমাদের ইনসাইটস</span>
-				</div>
-				<h1 class="text-6xl md:text-[8rem] font-display font-bold text-slate-900 mb-10 leading-[0.95] tracking-tight">
-					আইডিয়া ও <br />
-					<span class="text-red-600 italic">অনুপ্রেরণা।</span>
-				</h1>
-				
-				<div class="flex flex-col md:flex-row items-end justify-between gap-10">
-					<p class="text-xl md:text-2xl text-slate-500 font-medium max-w-xl leading-relaxed">
-						উদ্যোক্তাদের জন্য ডিজিটাল বিজনেসের লেটেস্ট গাইডলাইন, ডিজাইন টিপস এবং সফলতার গল্প।
-					</p>
-				</div>
-			</div>
-			
-			<div class="absolute top-0 right-0 w-1/3 h-full bg-red-500/5 -skew-x-12 translate-x-20 -z-10"></div>
-			<div class="absolute bottom-0 left-0 w-1/4 h-1/2 bg-slate-500/5 blur-[120px] -z-10"></div>
-		</section>
+  <div class="pt-20">
+    {/* Editorial Header */}
+    <section class="relative py-32 md:py-48 bg-white overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div
+          class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-red-100 bg-red-50 text-red-600 text-xs font-bold uppercase tracking-widest mb-10"
+        >
+          <Sparkles size={14} class="fill-current" />
+          <span>আমাদের ইনসাইটস</span>
+        </div>
+        <h1
+          class="text-6xl md:text-[8rem] font-display font-bold text-slate-900 mb-10 leading-[0.95] tracking-tight"
+        >
+          আইডিয়া ও <br />
+          <span class="text-red-600 italic">অনুপ্রেরণা।</span>
+        </h1>
 
-		<BlogGallery client:load />
+        <div class="flex flex-col md:flex-row items-end justify-between gap-10">
+          <p
+            class="text-xl md:text-2xl text-slate-500 font-medium max-w-xl leading-relaxed"
+          >
+            উদ্যোক্তাদের জন্য ডিজিটাল বিজনেসের লেটেস্ট গাইডলাইন, ডিজাইন টিপস এবং
+            সফলতার গল্প।
+          </p>
+        </div>
+      </div>
 
-		{/* Newsletter Section */}
-		<section class="py-32 bg-slate-900 rounded-[4rem] mx-6 mb-32 overflow-hidden text-center text-white relative">
-			<div class="max-w-3xl mx-auto px-6 relative z-10">
-				<h3 class="text-4xl md:text-6xl font-display font-bold mb-8">সব ইনসাইটস পান আপনার <br /> <span class="text-red-600 italic">ইনবক্সে।</span></h3>
-				<p class="text-white/50 text-lg font-medium mb-12">উদ্যোক্তাদের জন্য সেরা কন্টেন্ট পেতে আমাদের নিউজলেটারে সাবস্ক্রাইব করুন।</p>
-				<div class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
-					<input 
-						type="email" 
-						placeholder="আপনার ইমেইল এড্রেস" 
-						class="flex-grow bg-white/5 border border-white/10 rounded-2xl px-8 py-5 focus:outline-none focus:border-red-600 focus:bg-white/10 transition-all font-medium text-white"
-					/>
-					<button class="bg-red-600 hover:bg-white hover:text-red-600 text-white font-bold px-10 py-5 rounded-2xl transition-all shadow-xl shadow-red-600/20">
-						সাবস্ক্রাইব
-					</button>
-				</div>
-			</div>
-			<div class="absolute top-0 right-0 w-96 h-96 bg-red-600 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/2 opacity-20"></div>
-			<div class="absolute bottom-0 left-0 w-96 h-96 bg-red-600 rounded-full blur-[150px] translate-y-1/2 -translate-x-1/2 opacity-20"></div>
-		</section>
-	</div>
+      <div
+        class="absolute top-0 right-0 w-1/3 h-full bg-red-500/5 -skew-x-12 translate-x-20 -z-10"
+      >
+      </div>
+      <div
+        class="absolute bottom-0 left-0 w-1/4 h-1/2 bg-slate-500/5 blur-[120px] -z-10"
+      >
+      </div>
+    </section>
+
+    <BlogGallery posts={allPosts} client:load />
+
+    {/* Newsletter Section */}
+    <section
+      class="py-32 bg-slate-900 rounded-[4rem] mx-6 mb-32 overflow-hidden text-center text-white relative"
+    >
+      <div class="max-w-3xl mx-auto px-6 relative z-10">
+        <h3 class="text-4xl md:text-6xl font-display font-bold mb-8">
+          সব ইনসাইটস পান আপনার <br />
+          <span class="text-red-600 italic">ইনবক্সে।</span>
+        </h3>
+        <p class="text-white/50 text-lg font-medium mb-12">
+          উদ্যোক্তাদের জন্য সেরা কন্টেন্ট পেতে আমাদের নিউজলেটারে সাবস্ক্রাইব
+          করুন।
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+          <input
+            type="email"
+            placeholder="আপনার ইমেইল এড্রেস"
+            class="flex-grow bg-white/5 border border-white/10 rounded-2xl px-8 py-5 focus:outline-none focus:border-red-600 focus:bg-white/10 transition-all font-medium text-white"
+          />
+          <button
+            class="bg-red-600 hover:bg-white hover:text-red-600 text-white font-bold px-10 py-5 rounded-2xl transition-all shadow-xl shadow-red-600/20"
+          >
+            সাবস্ক্রাইব
+          </button>
+        </div>
+      </div>
+      <div
+        class="absolute top-0 right-0 w-96 h-96 bg-red-600 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/2 opacity-20"
+      >
+      </div>
+      <div
+        class="absolute bottom-0 left-0 w-96 h-96 bg-red-600 rounded-full blur-[150px] translate-y-1/2 -translate-x-1/2 opacity-20"
+      >
+      </div>
+    </section>
+  </div>
 </Layout>

@@ -1,0 +1,206 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import {
+  Calendar,
+  Clock,
+  ArrowLeft,
+  Facebook,
+  Twitter,
+  Linkedin,
+  Share2,
+  ArrowRight,
+} from "lucide-react";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection("blog");
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Layout title={`${entry.data.title} | উদ্যোক্তা স্টুডিও`}>
+  <div class="pt-20">
+    <section class="pt-20 pb-16 bg-white">
+      <div class="max-w-4xl mx-auto px-6">
+        <a
+          href="/blog"
+          class="inline-flex items-center gap-2 text-slate-400 font-bold text-xs uppercase tracking-widest mb-12 hover:text-red-600 transition-colors"
+        >
+          <ArrowLeft size={16} /> ফিরে যান
+        </a>
+
+        <div>
+          <span
+            class="inline-block px-4 py-1.5 rounded-full bg-red-50 text-red-600 text-[10px] font-bold uppercase tracking-widest mb-8"
+          >
+            {entry.data.category}
+          </span>
+          <h1
+            class="text-4xl md:text-7xl font-display font-bold text-slate-900 mb-10 leading-[1.1] tracking-tight"
+          >
+            {entry.data.title}
+          </h1>
+
+          <div
+            class="flex flex-wrap items-center gap-8 py-8 border-y border-slate-100 mb-16"
+          >
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full overflow-hidden">
+                <img
+                  src={entry.data.authorImage}
+                  alt={entry.data.author}
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div>
+                <p
+                  class="text-xs text-slate-400 font-bold uppercase tracking-widest mb-1"
+                >
+                  লেখক
+                </p>
+                <p class="font-bold text-slate-900">{entry.data.author}</p>
+              </div>
+            </div>
+            <div class="h-10 w-px bg-slate-100 hidden sm:block"></div>
+            <div class="flex flex-wrap gap-8">
+              <div>
+                <p
+                  class="text-xs text-slate-400 font-bold uppercase tracking-widest mb-1"
+                >
+                  প্রকাশিত
+                </p>
+                <p class="font-bold text-slate-900">{entry.data.pubDate}</p>
+              </div>
+              <div>
+                <p
+                  class="text-xs text-slate-400 font-bold uppercase tracking-widest mb-1"
+                >
+                  সময় লাগবে
+                </p>
+                <p class="font-bold text-slate-900">{entry.data.readTime}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-6 mb-24">
+      <div
+        class="max-w-6xl mx-auto aspect-[21/9] rounded-[4rem] overflow-hidden shadow-2xl"
+      >
+        <img
+          src={entry.data.image}
+          alt={entry.data.title}
+          class="w-full h-full object-cover"
+        />
+      </div>
+    </section>
+
+    <section class="pb-32 bg-white">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="flex flex-col lg:flex-row gap-16">
+          <div
+            class="lg:w-16 shrink-0 lg:sticky lg:top-40 h-fit flex lg:flex-col gap-4"
+          >
+            <button
+              class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 hover:text-blue-600 hover:bg-blue-50 transition-all border border-slate-100"
+            >
+              <Facebook size={20} />
+            </button>
+            <button
+              class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 hover:text-sky-500 hover:bg-sky-50 transition-all border border-slate-100"
+            >
+              <Twitter size={20} />
+            </button>
+            <button
+              class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 hover:text-blue-700 hover:bg-blue-50 transition-all border border-slate-100"
+            >
+              <Linkedin size={20} />
+            </button>
+            <button
+              class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 hover:text-red-600 hover:bg-red-50 transition-all border border-slate-100"
+            >
+              <Share2 size={20} />
+            </button>
+          </div>
+
+          <div class="grow">
+            <article
+              class="prose prose-xl prose-slate max-w-none
+                prose-headings:font-display prose-headings:font-bold prose-headings:text-slate-900
+                prose-p:text-slate-600 prose-p:leading-[1.8] prose-p:font-medium
+                prose-blockquote:border-l-4 prose-blockquote:border-red-600 prose-blockquote:bg-red-50 prose-blockquote:p-10 prose-blockquote:rounded-[2rem] prose-blockquote:font-display prose-blockquote:italic prose-blockquote:text-2xl prose-blockquote:text-slate-900 prose-blockquote:font-bold
+                prose-h3:text-3xl prose-h3:mt-16 prose-h3:mb-8"
+            >
+              <Content />
+            </article>
+
+            {
+              entry.data.tags && (
+                <div class="mt-20 pt-10 border-t border-slate-100 flex flex-wrap gap-3">
+                  {entry.data.tags.map((tag) => (
+                    <span class="px-5 py-2 rounded-xl bg-slate-50 text-slate-500 text-xs font-bold uppercase tracking-widest border border-slate-100">
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              )
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 bg-slate-50">
+      <div class="max-w-4xl mx-auto px-6">
+        <div
+          class="p-12 rounded-[3.5rem] bg-white border border-slate-100 flex flex-col md:flex-row items-center gap-12 text-center md:text-left"
+        >
+          <div
+            class="w-32 h-32 rounded-full overflow-hidden shrink-0 border-4 border-red-50 shadow-xl"
+          >
+            <img
+              src={entry.data.authorImage}
+              alt={entry.data.author}
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div>
+            <p
+              class="text-red-600 font-bold uppercase tracking-widest text-xs mb-4"
+            >
+              লেখকের কথা
+            </p>
+            <h4 class="text-3xl font-display font-bold text-slate-900 mb-4">
+              {entry.data.author}
+            </h4>
+            <p class="text-slate-500 font-medium leading-relaxed mb-8">
+              উদ্যোক্তা স্টুডিওর ফাউন্ডার এবং একজন ডিজিটাল বিজনেজ কনসালটেন্ট। গত
+              ৮ বছর ধরে তিনি ক্ষুদ্র উদ্যোক্তাদের প্রযুক্তিগত উন্নয়নে সহায়তা
+              করছেন।
+            </p>
+            <div class="flex justify-center md:justify-start gap-4">
+              <a
+                href="#"
+                class="text-slate-400 hover:text-red-600 transition-colors font-bold text-sm"
+                >INSTAGRAM</a
+              >
+              <a
+                href="#"
+                class="text-slate-400 hover:text-red-600 transition-colors font-bold text-sm"
+                >LINKEDIN</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
