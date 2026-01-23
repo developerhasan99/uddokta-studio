@@ -3,21 +3,21 @@ import { Menu, X, Rocket, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar: React.FC = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [showSticky, setShowSticky] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [pathname, setPathname] = useState("");
 
   useEffect(() => {
     setPathname(window.location.pathname);
+
     const handleScroll = () => {
-      // Use a slightly larger threshold for stability
-      setIsScrolled(window.scrollY > 50);
+      const scrollY = window.scrollY;
+      // Trigger sticky pill after Hero (around 500px)
+      setShowSticky(scrollY > 500);
     };
 
-    // Check initial scroll position
     handleScroll();
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -63,151 +63,152 @@ const Navbar: React.FC = () => {
     }
   };
 
-  return (
-    <nav className="fixed top-6 left-0 right-0 z-50 flex justify-center pointer-events-none px-6">
-      <motion.div
-        initial={false}
-        animate={{
-          width: isScrolled ? "auto" : "100%",
-          backgroundColor: isScrolled
-            ? "rgba(255, 255, 255, 0.98)"
-            : "rgba(255, 255, 255, 0)",
-          padding: isScrolled ? "0.6rem 1.25rem" : "1rem 0rem",
-          borderRadius: isScrolled ? "100px" : "0px",
-          boxShadow: isScrolled
-            ? "0 20px 40px -15px rgba(0, 0, 0, 0.12)"
-            : "none",
-          borderColor: isScrolled
-            ? "rgba(228, 228, 231, 0.8)"
-            : "rgba(228, 228, 231, 0)",
-        }}
-        transition={{
-          duration: 0.4,
-          ease: [0.22, 1, 0.36, 1],
-        }}
-        className={`flex justify-between items-center backdrop-blur-xl border pointer-events-auto ${isScrolled ? "gap-12 md:gap-20" : "gap-0"}`}
-        style={{ maxWidth: "1280px" }}
-      >
-        <a
-          href="/"
-          className="flex items-center gap-3 cursor-pointer group px-2 shrink-0"
-          onClick={(e) => handleLinkClick(e, "/")}
-        >
-          <div
-            className={`
-              bg-red-600 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300
-              ${isScrolled ? "w-8 h-8" : "w-10 h-10"}
-            `}
-          >
-            <Rocket
-              className="text-white fill-current"
-              size={isScrolled ? 16 : 20}
-            />
-          </div>
-          <span
-            className={`
-              font-display font-bold tracking-tight text-slate-900 uppercase whitespace-nowrap transition-all duration-300
-              ${isScrolled ? "text-base" : "text-xl"}
-            `}
-          >
-            UDDOKTA<span className="text-red-600">.</span>STUDIO
-          </span>
-        </a>
+  // TODO: Navigation links are not working properly
 
-        {/* Desktop Navigation */}
-        <div
-          className={`hidden lg:flex items-center ${isScrolled ? "gap-6" : "gap-10"}`}
-        >
-          <div className="flex items-center gap-8">
-            {navItems.map((item) => {
-              const isActive =
-                pathname === item.href ||
-                (item.submenu && pathname.startsWith("/services"));
+  const NavLinks = ({ isSticky = false }: { isSticky?: boolean }) => (
+    <div
+      className={`hidden lg:flex items-center ${isSticky ? "gap-6" : "gap-10"}`}
+    >
+      <div className="flex items-center gap-8">
+        {navItems.map((item) => {
+          const isActive =
+            pathname === item.href ||
+            (item.submenu && pathname.startsWith("/services"));
 
-              if (item.submenu) {
-                return (
-                  <div
-                    key={item.name}
-                    className="relative"
-                    onMouseEnter={() => setServicesOpen(true)}
-                    onMouseLeave={() => setServicesOpen(false)}
-                  >
-                    <a
-                      href={item.href}
-                      onClick={(e) => handleLinkClick(e, item.href)}
-                      className={`text-sm font-bold tracking-wide flex items-center gap-1 transition-colors ${isActive ? "text-red-600" : "text-slate-600 hover:text-red-600"}`}
-                    >
-                      {item.name}
-                      <ChevronDown
-                        size={14}
-                        className={`transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`}
-                      />
-                    </a>
-                    <AnimatePresence>
-                      {servicesOpen && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 10 }}
-                          className="absolute top-full left-0 pt-4 w-64"
-                        >
-                          <div className="bg-white rounded-[2rem] border border-slate-100 shadow-2xl p-4 flex flex-col gap-1">
-                            {item.submenu.map((sub) => (
-                              <a
-                                key={sub.slug}
-                                href={`/services/${sub.slug}`}
-                                onClick={() => setServicesOpen(false)}
-                                className="px-4 py-3 rounded-xl text-sm font-bold text-slate-600 hover:text-red-600 hover:bg-red-50 transition-all"
-                              >
-                                {sub.name}
-                              </a>
-                            ))}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                );
-              }
-
-              return (
+          if (item.submenu) {
+            return (
+              <div
+                key={item.name}
+                className="relative"
+                onMouseEnter={() => setServicesOpen(true)}
+                onMouseLeave={() => setServicesOpen(false)}
+              >
                 <a
-                  key={item.name}
                   href={item.href}
                   onClick={(e) => handleLinkClick(e, item.href)}
-                  className={`text-sm font-bold tracking-wide relative group whitespace-nowrap transition-colors ${isActive ? "text-red-600" : "text-slate-600 hover:text-red-600"}`}
+                  className={`text-sm font-bold tracking-wide flex items-center gap-1 transition-colors ${isActive ? "text-red-600" : "text-slate-600 hover:text-red-600"}`}
                 >
                   {item.name}
-                  <span
-                    className={`absolute -bottom-1 left-0 h-0.5 bg-red-600 transition-all ${isActive ? "w-full" : "w-0 group-hover:w-full"}`}
-                  ></span>
+                  <ChevronDown
+                    size={14}
+                    className={`transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`}
+                  />
                 </a>
-              );
-            })}
+                <AnimatePresence>
+                  {servicesOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      className="absolute top-full left-0 pt-4 w-64"
+                    >
+                      <div className="bg-white rounded-[2rem] border border-slate-100 shadow-2xl p-4 flex flex-col gap-1">
+                        {item.submenu.map((sub) => (
+                          <a
+                            key={sub.slug}
+                            href={`/services/${sub.slug}`}
+                            onClick={() => setServicesOpen(false)}
+                            className="px-4 py-3 rounded-xl text-sm font-bold text-slate-600 hover:text-red-600 hover:bg-red-50 transition-all"
+                          >
+                            {sub.name}
+                          </a>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          }
+
+          return (
+            <a
+              key={item.name}
+              href={item.href}
+              onClick={(e) => handleLinkClick(e, item.href)}
+              className={`text-sm font-bold tracking-wide relative group whitespace-nowrap transition-colors ${isActive ? "text-red-600" : "text-slate-600 hover:text-red-600"}`}
+            >
+              {item.name}
+              <span
+                className={`absolute -bottom-1 left-0 h-0.5 bg-red-600 transition-all ${isActive ? "w-full" : "w-0 group-hover:w-full"}`}
+              ></span>
+            </a>
+          );
+        })}
+      </div>
+      <a
+        href="/contact"
+        className={`bg-slate-900 text-white rounded-full font-bold hover:bg-red-600 transition-all shadow-lg shadow-black/10 whitespace-nowrap flex items-center justify-center ${isSticky ? "px-5 py-2 text-sm ml-2" : "px-8 py-3 text-sm ml-4"}`}
+      >
+        শুরু করুন
+      </a>
+    </div>
+  );
+
+  const Logo = ({ isSticky = false }: { isSticky?: boolean }) => (
+    <a
+      href="/"
+      className="flex items-center gap-3 cursor-pointer group px-2 shrink-0"
+      onClick={(e) => handleLinkClick(e, "/")}
+    >
+      <div
+        className={`bg-red-600 rounded-xl flex items-center justify-center shrink-0 transition-all duration-500 ${isSticky ? "w-8 h-8 rotate-0" : "w-10 h-10 -rotate-6 group-hover:rotate-0"}`}
+      >
+        <Rocket className="text-white fill-current" size={isSticky ? 16 : 20} />
+      </div>
+      <span
+        className={`font-display font-bold tracking-tight text-slate-900 uppercase whitespace-nowrap transition-all duration-500 ${isSticky ? "text-base" : "text-xl"}`}
+      >
+        UDDOKTA<span className="text-red-600">.</span>STUDIO
+      </span>
+    </a>
+  );
+
+  return (
+    <>
+      {/* 1. Static Top Header (Absolute) */}
+      <div className="absolute top-0 left-0 right-0 z-50 flex justify-center px-6 py-6 pointer-events-none">
+        <div className="w-full max-w-7xl flex justify-between items-center pointer-events-auto">
+          <Logo />
+          <NavLinks />
+          <div className="lg:hidden px-2 flex items-center h-full">
+            <button
+              className="text-slate-900 p-2"
+              onClick={() => setMobileMenuOpen(true)}
+            >
+              <Menu size={24} />
+            </button>
           </div>
-          <a
-            href="/contact"
-            className={`
-              bg-slate-900 text-white rounded-full font-bold hover:bg-red-600 transition-all shadow-lg shadow-black/10 whitespace-nowrap flex items-center justify-center
-              ${isScrolled ? "px-5 py-2 text-[11px] ml-2" : "px-8 py-3 text-sm ml-4"}
-            `}
-          >
-            শুরু করুন
-          </a>
         </div>
+      </div>
 
-        {/* Mobile Button */}
-        <div className="lg:hidden px-2 flex items-center h-full">
-          <button
-            className="text-slate-900 p-2"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+      {/* 2. Sticky Pill Header (Fixed Slide-down) */}
+      <AnimatePresence>
+        {showSticky && (
+          <motion.div
+            initial={{ y: -100, x: "-50%", opacity: 0 }}
+            animate={{ y: 0, x: "-50%", opacity: 1 }}
+            exit={{ y: -100, x: "-50%", opacity: 0 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed top-4 left-1/2 z-[60] flex justify-center pointer-events-none px-4 w-full"
           >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </motion.div>
+            <div className="flex justify-between items-center backdrop-blur-xl border border-white/20 bg-white/95 rounded-[100px] shadow-2xl p-3 pointer-events-auto gap-12 md:gap-20 max-w-fit border-slate-200/80">
+              <Logo isSticky />
+              <NavLinks isSticky />
+              <div className="lg:hidden px-2 flex items-center h-full">
+                <button
+                  className="text-slate-900 p-2"
+                  onClick={() => setMobileMenuOpen(true)}
+                >
+                  <Menu size={24} />
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {/* Mobile Menu Overlay */}
+      {/* 3. Shared Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -215,7 +216,7 @@ const Navbar: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="lg:hidden fixed inset-0 bg-white/98 backdrop-blur-2xl z-[60] flex flex-col pointer-events-auto"
+            className="lg:hidden fixed inset-0 bg-white/98 backdrop-blur-2xl z-[100] flex flex-col pointer-events-auto"
           >
             <div className="p-10 flex flex-col h-full overflow-y-auto">
               <div className="flex justify-between items-center mb-16 shrink-0">
@@ -279,7 +280,7 @@ const Navbar: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   );
 };
 
