@@ -10,8 +10,15 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     setPathname(window.location.pathname);
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      // Use a slightly larger threshold for stability
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    // Check initial scroll position
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -59,16 +66,14 @@ const Navbar: React.FC = () => {
   return (
     <nav className="fixed top-6 left-0 right-0 z-50 flex justify-center pointer-events-none px-6">
       <motion.div
-        layout
         initial={false}
         animate={{
           width: isScrolled ? "auto" : "100%",
-          maxWidth: isScrolled ? "100%" : "1280px",
           backgroundColor: isScrolled
             ? "rgba(255, 255, 255, 0.98)"
             : "rgba(255, 255, 255, 0)",
           padding: isScrolled ? "0.6rem 1.25rem" : "1rem 0rem",
-          borderRadius: isScrolled ? "9999px" : "0px",
+          borderRadius: isScrolled ? "100px" : "0px",
           boxShadow: isScrolled
             ? "0 20px 40px -15px rgba(0, 0, 0, 0.12)"
             : "none",
@@ -76,34 +81,37 @@ const Navbar: React.FC = () => {
             ? "rgba(228, 228, 231, 0.8)"
             : "rgba(228, 228, 231, 0)",
         }}
-        transition={{ type: "spring", stiffness: 350, damping: 35, mass: 1 }}
+        transition={{
+          duration: 0.4,
+          ease: [0.22, 1, 0.36, 1],
+        }}
         className={`flex justify-between items-center backdrop-blur-xl border pointer-events-auto ${isScrolled ? "gap-12 md:gap-20" : "gap-0"}`}
+        style={{ maxWidth: "1280px" }}
       >
         <a
           href="/"
           className="flex items-center gap-3 cursor-pointer group px-2 shrink-0"
           onClick={(e) => handleLinkClick(e, "/")}
         >
-          <motion.div
-            animate={{
-              width: isScrolled ? 32 : 40,
-              height: isScrolled ? 32 : 40,
-            }}
-            className="bg-red-600 rounded-xl flex items-center justify-center shrink-0"
+          <div
+            className={`
+              bg-red-600 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300
+              ${isScrolled ? "w-8 h-8" : "w-10 h-10"}
+            `}
           >
             <Rocket
               className="text-white fill-current"
               size={isScrolled ? 16 : 20}
             />
-          </motion.div>
-          <motion.span
-            animate={{
-              fontSize: isScrolled ? "1rem" : "1.25rem",
-            }}
-            className="font-display font-bold tracking-tight text-slate-900 uppercase whitespace-nowrap"
+          </div>
+          <span
+            className={`
+              font-display font-bold tracking-tight text-slate-900 uppercase whitespace-nowrap transition-all duration-300
+              ${isScrolled ? "text-base" : "text-xl"}
+            `}
           >
             UDDOKTA<span className="text-red-600">.</span>STUDIO
-          </motion.span>
+          </span>
         </a>
 
         {/* Desktop Navigation */}
