@@ -89,11 +89,14 @@ const Services: React.FC = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
-              whileHover={{ y: -10, transition: { duration: 0.3 } }}
-              className="p-12 bg-white rounded-[2.5rem] shadow-sm border border-slate-100 transition-all group h-full flex flex-col hover:shadow-2xl hover:shadow-red-600/5"
+              transition={{
+                delay: index * 0.1,
+                duration: 0.6,
+                ease: [0.23, 1, 0.32, 1],
+              }}
+              className="p-12 bg-white rounded-[2.5rem] shadow-sm border border-slate-100 transition-all duration-300 ease-out group h-full flex flex-col hover:shadow-2xl hover:shadow-red-600/5"
             >
-              <div className="mb-10 w-16 h-16 rounded-[1.5rem] bg-red-50 text-red-600 flex items-center justify-center transition-transform group-hover:scale-110">
+              <div className="mb-10 w-16 h-16 rounded-[1.5rem] bg-red-50 text-red-600 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
                 {service.icon}
               </div>
 
@@ -106,7 +109,7 @@ const Services: React.FC = () => {
 
               <a
                 href={`/services/${service.slug}`}
-                className="flex items-center gap-3 text-red-600 font-bold text-sm uppercase tracking-widest transition-all group-hover:gap-5"
+                className="flex items-center gap-3 text-red-600 font-bold text-sm uppercase tracking-widest transition-all duration-300 group-hover:gap-5"
               >
                 বিস্তারিত দেখুন <ArrowUpRight size={18} />
               </a>

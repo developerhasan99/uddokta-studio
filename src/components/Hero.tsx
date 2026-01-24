@@ -45,8 +45,8 @@ const Hero: React.FC = () => {
           variants={itemVariants}
           className="text-6xl md:text-[8rem] font-display font-bold leading-[1.05] mb-10 text-slate-900 tracking-tight"
         >
-          আপনার ভিশনকে দেই <br />
-          <span className="text-red-600">ডিজিটাল পূর্ণতা।</span>
+          আপনার ব্যবসার জন্য <br />
+          <span className="text-red-600">ডিজিটাল সমাধান।</span>
         </motion.h1>
 
         <motion.p
@@ -54,7 +54,7 @@ const Hero: React.FC = () => {
           className="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto leading-relaxed font-medium mb-16"
         >
           উদ্যোক্তা স্টুডিও বাংলাদেশের ক্ষুদ্র ও মাঝারি ব্যবসার জন্য তৈরি করে
-          আধুনিক, কার্যকরী এবং দৃষ্টিনন্দন ডিজিটাল প্লাটফর্ম।
+          দ্রুত, কার্যকর এবং বিক্রি বাড়ানো ডিজিটাল প্ল্যাটফর্ম।
         </motion.p>
 
         <motion.div
@@ -67,7 +67,7 @@ const Hero: React.FC = () => {
             href="#contact"
             className="group bg-red-600 text-white px-10 py-5 rounded-2xl text-lg font-bold hover:bg-slate-900 transition-all flex items-center gap-3 shadow-xl shadow-red-600/20 hover:shadow-slate-900/20"
           >
-            শুরু করুন
+            ফ্রি কনসালটেশন নিন
             <ArrowRight
               size={20}
               className="group-hover:translate-x-1 transition-transform"
@@ -105,7 +105,7 @@ const Hero: React.FC = () => {
               ))}
             </div>
             <p className="text-sm font-semibold text-slate-400">
-              ৫০০+ উদ্যোক্তা আমাদের ওপর বিশ্বাস রেখেছেন
+              ⭐ ৫০০+ উদ্যোক্তা আমাদের ওপর আস্থা রেখেছেন
             </p>
           </div>
         </motion.div>

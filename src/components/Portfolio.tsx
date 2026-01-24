@@ -47,7 +47,7 @@ const Portfolio: React.FC = () => {
           </div>
           <a
             href="/portfolio"
-            className="px-10 py-5 bg-slate-900 text-white rounded-2xl font-bold text-sm hover:bg-red-600 transition-all shadow-xl shadow-black/10"
+            className="hidden md:block px-10 py-5 bg-slate-900 text-white rounded-2xl font-bold text-sm hover:bg-red-600 transition-all shadow-xl shadow-black/10"
           >
             সব প্রজেক্ট দেখুন
           </a>

@@ -16,14 +16,14 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="bg-white rounded-[3.5rem] overflow-hidden shadow-2xl shadow-slate-200 border border-slate-100 flex flex-col lg:flex-row">
-          <div className="lg:w-5/12 bg-slate-900 p-12 md:p-20 text-white flex flex-col justify-center">
+    <section id="contact" className="md:py-20 bg-slate-50">
+      <div className="max-w-7xl mx-auto md:px-6">
+        <div className="bg-white md:rounded-[3.5rem] overflow-hidden shadow-2xl shadow-slate-200 border border-slate-100 flex flex-col lg:flex-row">
+          <div className="lg:w-5/12 bg-slate-900 p-6 pb-12 pt-24 md:p-12 lg:p-20 text-white flex flex-col justify-center">
             <h2 className="text-red-600 font-bold uppercase tracking-[0.5em] text-xs mb-6">
               যোগাযোগ করুন
             </h2>
-            <h3 className="text-5xl font-display font-bold mb-12 leading-tight">
+            <h3 className="text-5xl font-display font-bold mb-12 !leading-tight">
               আসুন আপনার আইডিয়া নিয়ে{" "}
               <span className="text-red-600">কথা বলি।</span>
             </h3>
@@ -54,7 +54,7 @@ const Contact: React.FC = () => {
             </div>
           </div>
 
-          <div className="lg:w-7/12 p-12 md:p-20 relative">
+          <div className="lg:w-7/12 p-6 pt-12 pb-24 md:p-20 relative">
             {formState === "success" && (
               <div className="absolute inset-0 bg-white z-50 flex flex-col items-center justify-center text-center animate-in fade-in zoom-in duration-500">
                 <div className="w-24 h-24 bg-red-50 rounded-full flex items-center justify-center text-red-600 mb-8">

@@ -36,12 +36,12 @@ const Process: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-24 items-start">
+        <div className="flex flex-col lg:flex-row gap-24 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:w-5/12 sticky top-32"
+            className="lg:w-5/12"
           >
             <h2 className="text-red-600 font-bold uppercase tracking-[0.4em] text-[10px] mb-8">
               কাজের ধারা

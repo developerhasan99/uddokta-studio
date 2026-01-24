@@ -82,7 +82,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="pt-10 border-t border-slate-50 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-400 text-xs font-bold uppercase tracking-widest">
-          <p>© ২০২৪ উদ্যোক্তা স্টুডিও। সকল স্বত্ব সংরক্ষিত।</p>
+          <p>© ২০২৬ উদ্যোক্তা স্টুডিও। সকল স্বত্ব সংরক্ষিত।</p>
           <div className="flex gap-8">
             <a href="#" className="hover:text-slate-900 transition-colors">
               Privacy
