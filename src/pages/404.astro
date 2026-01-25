@@ -4,24 +4,24 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="পৃষ্ঠাটি পাওয়া যায়নি | উদ্রোক্তা স্টুডিও">
   <div
-    class="relative min-h-[70vh] flex items-center justify-center overflow-hidden px-4"
+    class="relative pt-32 pb-20 flex items-center justify-center overflow-hidden px-4"
   >
     <!-- Decorative depth elements -->
     <div
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-zinc-100/50 rounded-full blur-3xl -z-10 animate-pulse"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-slate-100/50 rounded-full blur-3xl -z-10 animate-pulse"
     >
     </div>
 
     <div class="max-w-2xl w-full text-center space-y-8 relative z-10">
       <div class="space-y-4">
         <h1
-          class="text-[12rem] font-black leading-none tracking-tighter text-zinc-900/5 select-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[60%] -z-10"
+          class="text-[12rem] font-black leading-none tracking-tighter text-slate-900/5 select-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[60%] -z-10"
         >
           404
         </h1>
 
         <div
-          class="inline-flex items-center justify-center p-3 rounded-2xl bg-zinc-900 text-white mb-6 transform -rotate-3 hover:rotate-0 transition-transform duration-500"
+          class="inline-flex items-center justify-center p-3 rounded-2xl bg-slate-900 text-white mb-6 transform -rotate-3 hover:rotate-0 transition-transform duration-500"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -40,11 +40,13 @@ import Layout from "../layouts/Layout.astro";
           >
         </div>
 
-        <h2 class="text-4xl md:text-5xl font-bold text-zinc-900 tracking-tight">
+        <h2
+          class="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight"
+        >
           দুঃখিত, এই পাতাটি খুঁজে পাওয়া যায়নি!
         </h2>
 
-        <p class="text-lg text-zinc-600 max-w-md mx-auto leading-relaxed">
+        <p class="text-lg text-slate-600 max-w-md mx-auto leading-relaxed">
           হয়তো লিঙ্কটি ভুল ছিল অথবা পাতাটি সরিয়ে ফেলা হয়েছে। নিচের বাটনটি চেপে
           আপনি আমাদের হোমপেজে ফিরে যেতে পারেন।
         </p>
@@ -55,7 +57,7 @@ import Layout from "../layouts/Layout.astro";
       >
         <a
           href="/"
-          class="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-300 bg-zinc-900 rounded-full hover:bg-zinc-800 hover:scale-105 active:scale-95 shadow-xl shadow-zinc-200"
+          class="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-300 bg-red-600 rounded-2xl hover:bg-slate-900 hover:scale-105 active:scale-95 shadow-xl shadow-slate-200"
         >
           <span>হোমপেজে ফিরে যান</span>
           <svg
@@ -75,7 +77,7 @@ import Layout from "../layouts/Layout.astro";
 
         <a
           href="/contact"
-          class="inline-flex items-center justify-center px-8 py-4 font-semibold text-zinc-900 transition-all duration-300 bg-white border-2 border-zinc-100 rounded-full hover:bg-zinc-50 hover:border-zinc-200 active:scale-95"
+          class="inline-flex items-center justify-center px-8 py-4 font-semibold text-slate-900 transition-all duration-300 bg-white border-2 border-slate-100 rounded-2xl hover:bg-slate-50 hover:border-slate-200 active:scale-95"
         >
           আমাদের সাথে যোগাযোগ করুন
         </a>
