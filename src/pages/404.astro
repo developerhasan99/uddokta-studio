@@ -1,0 +1,102 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="পৃষ্ঠাটি পাওয়া যায়নি | উদ্রোক্তা স্টুডিও">
+  <div
+    class="relative min-h-[70vh] flex items-center justify-center overflow-hidden px-4"
+  >
+    <!-- Decorative depth elements -->
+    <div
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-zinc-100/50 rounded-full blur-3xl -z-10 animate-pulse"
+    >
+    </div>
+
+    <div class="max-w-2xl w-full text-center space-y-8 relative z-10">
+      <div class="space-y-4">
+        <h1
+          class="text-[12rem] font-black leading-none tracking-tighter text-zinc-900/5 select-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[60%] -z-10"
+        >
+          404
+        </h1>
+
+        <div
+          class="inline-flex items-center justify-center p-3 rounded-2xl bg-zinc-900 text-white mb-6 transform -rotate-3 hover:rotate-0 transition-transform duration-500"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-search-x"
+            ><path d="m13.5 8.5-5 5"></path><path d="m8.5 8.5 5 5"
+            ></path><circle cx="11" cy="11" r="8"></circle><path
+              d="m21 21-4.3-4.3"></path></svg
+          >
+        </div>
+
+        <h2 class="text-4xl md:text-5xl font-bold text-zinc-900 tracking-tight">
+          দুঃখিত, এই পাতাটি খুঁজে পাওয়া যায়নি!
+        </h2>
+
+        <p class="text-lg text-zinc-600 max-w-md mx-auto leading-relaxed">
+          হয়তো লিঙ্কটি ভুল ছিল অথবা পাতাটি সরিয়ে ফেলা হয়েছে। নিচের বাটনটি চেপে
+          আপনি আমাদের হোমপেজে ফিরে যেতে পারেন।
+        </p>
+      </div>
+
+      <div
+        class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+      >
+        <a
+          href="/"
+          class="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-300 bg-zinc-900 rounded-full hover:bg-zinc-800 hover:scale-105 active:scale-95 shadow-xl shadow-zinc-200"
+        >
+          <span>হোমপেজে ফিরে যান</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="ml-2 transform group-hover:translate-x-1 transition-transform"
+            ><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg
+          >
+        </a>
+
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center px-8 py-4 font-semibold text-zinc-900 transition-all duration-300 bg-white border-2 border-zinc-100 rounded-full hover:bg-zinc-50 hover:border-zinc-200 active:scale-95"
+        >
+          আমাদের সাথে যোগাযোগ করুন
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 0.5;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+  }
+  .animate-pulse {
+    animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+</style>
