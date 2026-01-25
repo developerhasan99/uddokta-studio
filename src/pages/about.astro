@@ -58,7 +58,6 @@ const stats = [
   { label: "সফল প্রজেক্ট", value: "৫০০+" },
   { label: "সন্তুষ্ট ক্লায়েন্ট", value: "৩৫০+" },
   { label: "অভিজ্ঞ টিম", value: "১৫+" },
-  { label: "পুরস্কার জয়", value: "০৮+" },
 ];
 ---
 
@@ -98,72 +97,73 @@ const stats = [
       >
       </div>
     </section>
-
-    {/* Story Section */}
-    <section class="py-32 bg-slate-50 relative overflow-hidden">
+    <section id="about" class="py-32 bg-slate-50 relative">
       <div class="max-w-7xl mx-auto px-6">
-        <div class="grid lg:grid-cols-2 gap-24 items-center">
-          <div class="relative">
-            <div
-              class="aspect-[4/5] rounded-[3.5rem] overflow-hidden shadow-2xl"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1200"
-                alt="Our Workspace"
-                class="w-full h-full object-cover"
-              />
-            </div>
-            <div
-              class="absolute -bottom-10 -left-10 bg-red-600 p-12 rounded-[3rem] text-white shadow-2xl hidden md:block"
-            >
-              <p class="text-5xl font-display font-bold">২০২০</p>
-              <p
-                class="text-xs font-bold uppercase tracking-widest mt-2 opacity-80"
+        <div class="flex flex-col lg:flex-row gap-20 items-center">
+          <div class="lg:w-5/12" style="opacity: 1; transform: none;">
+            <div class="relative group">
+              <div
+                class="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl"
               >
-                যাত্রার শুরু
-              </p>
-            </div>
-          </div>
-
-          <div>
-            <h2
-              class="text-red-600 font-bold uppercase tracking-widest text-xs mb-8"
-            >
-              আমাদের গল্প
-            </h2>
-            <h3
-              class="text-4xl md:text-6xl font-display font-bold text-slate-900 mb-10 !leading-tight"
-            >
-              ক্ষুদ্র শুরু থেকে ডিজিটাল
-              <span class="text-red-600">বিপ্লব।</span>
-            </h3>
-            <div class="space-y-8 text-lg text-slate-500 font-medium">
-              <p>
-                আমাদের যাত্রা শুরু হয়েছিল একটি সাধারণ লক্ষ্য নিয়ে—কীভাবে
-                বাংলাদেশের উদ্যোক্তাদের জন্য বিশ্বমানের প্রযুক্তি সহজলভ্য করা
-                যায়। আমরা বিশ্বাস করি, একটি ভালো আইডিয়া সঠিক প্রযুক্তি পেলে
-                অসাধ্য সাধন করতে পারে।
-              </p>
-              <p>
-                গত ৩ বছরে আমরা ৫০০+ প্রজেক্ট সফলভাবে সম্পন্ন করেছি। আমাদের টিমে
-                কাজ করে একঝাঁক তরুণ ও মেধাবী ডিজাইনার ও ডেভেলপার, যারা প্রতিটি
-                পিক্সেল এবং কোডের পেছনে প্রাণ ঢেলে দেয়।
-              </p>
-
-              <div class="grid grid-cols-2 gap-8 pt-8">
-                {
-                  stats.map((stat) => (
-                    <div>
-                      <p class="text-4xl font-display font-bold text-slate-900">
-                        {stat.value}
-                      </p>
-                      <p class="text-sm font-bold text-slate-400 uppercase tracking-widest">
-                        {stat.label}
-                      </p>
-                    </div>
-                  ))
-                }
+                <img
+                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1200"
+                  alt="Creative Team"
+                  class="w-full h-full object-cover"
+                />
+              </div><div
+                class="absolute -bottom-10 -left-10 bg-red-600 p-10 rounded-[2.5rem] shadow-xl border border-red-600 hidden md:block"
+                style="opacity: 1; transform: none;"
+              >
+                <p class="text-4xl font-display font-bold text-white">২০২০</p><p
+                  class="text-xs font-bold text-white uppercase tracking-widest mt-1"
+                >
+                  যাত্রার শুরু
+                </p>
               </div>
+            </div>
+          </div><div class="lg:w-7/12">
+            <div style="opacity: 1; transform: none;">
+              <div class="inline-flex items-center gap-2 mb-8 text-red-600">
+                <span class="font-bold uppercase tracking-widest text-xs">
+                  আমাদের গল্প
+                </span>
+              </div>
+              <h2
+                class="text-5xl md:text-7xl font-display font-bold text-slate-900 mb-10 !leading-tight"
+              >
+                ক্ষুদ্র শুরু থেকে
+                <span class="text-red-600">ডিজিটাল বিপ্লব।</span>
+              </h2>
+              <div class="space-y-8 text-lg text-slate-500 font-medium mb-10">
+                <p>
+                  আমাদের যাত্রা শুরু হয়েছিল একটি সাধারণ লক্ষ্য নিয়ে—কীভাবে
+                  বাংলাদেশের উদ্যোক্তাদের জন্য বিশ্বমানের প্রযুক্তি সহজলভ্য করা
+                  যায়। আমরা বিশ্বাস করি, একটি ভালো আইডিয়া সঠিক প্রযুক্তি পেলে
+                  অসাধ্য সাধন করতে পারে।
+                </p>
+                <p>
+                  গত ৩ বছরে আমরা ৫০০+ প্রজেক্ট সফলভাবে সম্পন্ন করেছি। আমাদের
+                  টিমে কাজ করে একঝাঁক তরুণ ও মেধাবী ডিজাইনার ও ডেভেলপার, যারা
+                  প্রতিটি পিক্সেল এবং কোডের পেছনে প্রাণ ঢেলে দেয়।
+                </p>
+              </div>
+            </div>
+            <div class="grid sm:grid-cols-3 gap-8">
+              {
+                stats.map((s) => (
+                  <div
+                    class="p-8 rounded-[2rem] bg-slate-50 border border-transparent transition-all group"
+                    style="opacity: 1; transform: none; background-color: rgb(248, 250, 252); box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px;"
+                  >
+                    <h4 class="text-lg font-bold text-slate-900 mb-3">
+                      {s.label}
+                    </h4>
+                    <p class="text-4xl text-red-600 font-bold leading-none">
+                      {s.value}
+                    </p>
+                  </div>
+                ))
+              }
             </div>
           </div>
         </div>
