@@ -6,13 +6,38 @@ const Contact: React.FC = () => {
     "idle",
   );
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormState("submitting");
-    setTimeout(() => {
-      setFormState("success");
-      setTimeout(() => setFormState("idle"), 3000);
-    }, 1500);
+    setErrorMessage(null);
+
+    const formData = new FormData(e.currentTarget);
+    formData.append("_wpcf7_unit_tag", "wpcf7-f12-p13-o1");
+
+    try {
+      const response = await fetch(
+        "https://aquorix.digital/wp-json/contact-form-7/v1/contact-forms/12/feedback",
+        {
+          method: "POST",
+          body: formData,
+        },
+      );
+
+      const result = await response.json();
+
+      if (result.status === "mail_sent") {
+        setFormState("success");
+        setTimeout(() => setFormState("idle"), 3000);
+      } else {
+        setFormState("idle");
+        setErrorMessage(result.message || "কিছু ভুল হয়েছে, আবার চেষ্টা করুন।");
+      }
+    } catch (error) {
+      setFormState("idle");
+      setErrorMessage("নেটওয়ার্ক সমস্যা, আবার চেষ্টা করুন।");
+    }
   };
 
   return (
@@ -77,6 +102,7 @@ const Contact: React.FC = () => {
                   </label>
                   <input
                     required
+                    name="your-name"
                     type="text"
                     className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-6 py-4 text-slate-900 focus:outline-none focus:border-red-600 focus:bg-white transition-all font-medium"
                     placeholder="জনি হোসাইন"
@@ -91,6 +117,7 @@ const Contact: React.FC = () => {
                   </label>
                   <input
                     required
+                    name="your-email"
                     type="email"
                     className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-6 py-4 text-slate-900 focus:outline-none focus:border-red-600 focus:bg-white transition-all font-medium"
                     placeholder="hello@company.com"
@@ -102,6 +129,7 @@ const Contact: React.FC = () => {
                   </label>
                   <input
                     required
+                    name="your-phone"
                     type="tel"
                     className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-6 py-4 text-slate-900 focus:outline-none focus:border-red-600 focus:bg-white transition-all font-medium"
                     placeholder="+৮৮০ ১৭১২-৩৪৫৬৭৮"
@@ -115,13 +143,22 @@ const Contact: React.FC = () => {
                 </label>
                 <textarea
                   required
+                  name="your-message"
                   className="w-full bg-slate-50 border border-slate-100 rounded-3xl px-6 py-6 h-40 text-slate-900 focus:outline-none focus:border-red-600 focus:bg-white transition-all font-medium resize-none"
                   placeholder="আপনার প্রোজেক্ট সম্পর্কে বিস্তারিত বলুন..."
                 ></textarea>
               </div>
+
+              {errorMessage && (
+                <div className="text-red-600 text-sm font-medium">
+                  {errorMessage}
+                </div>
+              )}
+
               <button
                 disabled={formState === "submitting"}
-                className="w-full bg-red-600 text-white py-6 rounded-2xl text-lg font-bold hover:bg-slate-900 transition-all shadow-xl shadow-red-600/20 flex items-center justify-center gap-3"
+                type="submit"
+                className="w-full bg-red-600 text-white py-6 rounded-2xl text-lg font-bold hover:bg-slate-900 transition-all shadow-xl shadow-red-600/20 flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {formState === "submitting" ? (
                   "পাঠানো হচ্ছে..."
