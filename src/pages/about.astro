@@ -1,58 +1,55 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import {
-  Target,
-  Users,
-  Globe,
-  Award,
-  Sparkles,
-  ArrowRight,
-  Shield,
-  Rocket,
-  Lightbulb,
-} from "lucide-react";
-import { motion } from "framer-motion";
+import { Target, Globe, Award, Sparkles, ArrowRight } from "lucide-react";
+import { Image } from "astro:assets";
+import mehediImg from "../../public/mehedi-hasan.jpg";
+import arifulImg from "../../public/ariful-shikdar.jpeg";
+import avijitImg from "../../public/avijit-datta.jpeg";
+import karimaImg from "../../public/karima.png";
+import najmulImg from "../../public/najmul.png";
+import atikurImg from "../../public/atikur-rahman.jpeg";
+import sojibImg from "../../public/sojib.jpg";
 
 const team = [
   {
     name: "মেহেদী হাসান",
     role: "বিজনেস স্ট্র্যাটেজিস্ট",
-    image: "../../public/mehedi-hasan.jpg",
+    image: mehediImg,
   },
   {
     name: "আরিফুল শিকদার",
     role: "লারাভেল ডেভেলপার",
-    image: "../../public/ariful-shikdar.jpeg",
+    image: arifulImg,
   },
   {
     name: "অভিজিৎ দত্ত",
     role: "ওয়ার্ডপ্রেস ডেভেলপার",
-    image: "../../public/avijit-datta.jpeg",
+    image: avijitImg,
   },
   {
     name: "কারিমা খাতুন",
     role: "ই-কমার্স স্পেশালিষ্ট",
-    image: "../../public/karima.png",
+    image: karimaImg,
   },
   {
     name: "নাজমুল ইসলাম",
     role: "সিআরএম স্পেশালিষ্ট",
-    image: "../../public/najmul.png",
+    image: najmulImg,
   },
   {
     name: "আতিকুর রহমান",
     role: "হেড অফ মার্কেটিং",
-    image: "../../public/atikur-rahman.jpeg",
+    image: atikurImg,
   },
   {
     name: "সজীব আহমেদ",
     role: "গ্রাফিক্স ডিজাইনার",
-    image: "../../public/sojib.jpg",
+    image: sojibImg,
   },
   {
     name: "সজীব আহমেদ",
     role: "কন্টেন্ট লিড",
-    image: "https://i.pravatar.cc/300?u=rakib",
+    image: sojibImg,
   },
 ];
 
@@ -256,7 +253,7 @@ const stats = [
             team.map((member) => (
               <div class="group">
                 <div class="aspect-square rounded-[2.5rem] overflow-hidden mb-8 relative grayscale group-hover:grayscale-0 transition-all duration-700">
-                  <img
+                  <Image
                     src={member.image}
                     alt={member.name}
                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
