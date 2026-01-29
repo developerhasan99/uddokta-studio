@@ -84,7 +84,7 @@ const PortfolioGallery: React.FC = () => {
   return (
     <>
       {/* Filter Section */}
-      <section className="sticky top-24 z-40 bg-white/80 backdrop-blur-xl border-y border-slate-100 py-6">
+      <section className="border-y border-slate-100 py-6">
         <div className="max-w-7xl mx-auto px-6 flex flex-wrap justify-center gap-4">
           {categories.map((cat) => (
             <button
@@ -92,10 +92,9 @@ const PortfolioGallery: React.FC = () => {
               onClick={() => setActiveTab(cat.id)}
               className={`
                 flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold transition-all
-                ${
-                  activeTab === cat.id
-                    ? "bg-red-600 text-white shadow-xl shadow-red-600/20 scale-105"
-                    : "bg-slate-50 text-slate-500 hover:bg-slate-100"
+                ${activeTab === cat.id
+                  ? "bg-red-600 text-white shadow-xl shadow-red-600/20 scale-105"
+                  : "bg-slate-50 text-slate-500 hover:bg-slate-100"
                 }
               `}
             >
