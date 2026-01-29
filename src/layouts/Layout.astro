@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
+// import WhatsappButton from "../components/WhatsappButton";
 
 interface Props {
   title: string;
@@ -39,6 +40,8 @@ const { title } = Astro.props;
         <slot />
       </main>
       <Footer />
+
+      <!-- <WhatsappButton /> -->
 
       <!-- Aesthetic Background Texture -->
       <div
