@@ -58,7 +58,7 @@ const BlogGallery: React.FC<BlogGalleryProps> = ({ posts }) => {
         </div>
       </div>
 
-      <section className="sticky top-24 z-40 bg-white/80 backdrop-blur-xl border-y border-slate-100 py-6 overflow-x-auto no-scrollbar">
+      <section className="border-y border-slate-100 py-6 overflow-x-auto no-scrollbar">
         <div className="max-w-7xl mx-auto px-6 flex items-center gap-4 min-w-max">
           <Filter size={18} className="text-red-600 mr-2" />
           {categories.map((cat) => (
@@ -67,10 +67,9 @@ const BlogGallery: React.FC<BlogGalleryProps> = ({ posts }) => {
               onClick={() => setActiveTab(cat)}
               className={`
                 px-6 py-3 rounded-full text-sm font-bold transition-all whitespace-nowrap
-                ${
-                  activeTab === cat
-                    ? "bg-red-600 text-white shadow-xl shadow-red-600/20"
-                    : "bg-slate-50 text-slate-500 hover:bg-slate-100"
+                ${activeTab === cat
+                  ? "bg-red-600 text-white shadow-xl shadow-red-600/20"
+                  : "bg-slate-50 text-slate-500 hover:bg-slate-100"
                 }
               `}
             >
