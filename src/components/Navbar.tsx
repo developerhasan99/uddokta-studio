@@ -6,9 +6,7 @@ const Navbar: React.FC = () => {
   const [showSticky, setShowSticky] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
-  const [pathname, setPathname] = useState(() =>
-    typeof window !== "undefined" ? window.location.pathname : "",
-  );
+  const [pathname, setPathname] = useState("");
 
   useEffect(() => {
     // Initial sync
