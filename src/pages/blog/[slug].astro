@@ -13,7 +13,7 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<Layout title={`${entry.data.title} | উদ্যোক্তা`} description={entry.data.description}>
+<Layout title={`${entry.data.title} | উদ্যোক্তা স্টুডিও`} description={entry.data.description}>
   <article class="max-w-3xl mx-auto px-4 sm:px-6 pt-10 sm:pt-14 pb-16">
     <a href="/blog" class="inline-flex items-center gap-1.5 text-[13px] font-medium text-muted hover:text-primary no-underline"><Icon name="back" size={15} /> সব লেখা</a>
     <div class="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] text-muted">
@@ -34,7 +34,7 @@ const { Content } = await render(entry);
     <div class="mt-12 card p-6 sm:flex items-center justify-between gap-6">
       <div>
         <h2 class="text-[17px] font-semibold text-ink">নিজের ল্যান্ডিং পেজ বানাতে চান?</h2>
-        <p class="mt-1 text-sm text-muted">উদ্যোক্তায় অ্যাকাউন্ট খুলে কয়েক মিনিটে প্রথম পেজ চালু করুন।</p>
+        <p class="mt-1 text-sm text-muted">উদ্যোক্তা স্টুডিওতে অ্যাকাউন্ট খুলে কয়েক মিনিটে প্রথম পেজ চালু করুন।</p>
       </div>
       <a href={SIGNUP_URL} class="btn btn-primary mt-4 sm:mt-0">অ্যাকাউন্ট খুলুন</a>
     </div>

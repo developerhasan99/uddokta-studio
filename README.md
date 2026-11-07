@@ -1,6 +1,6 @@
 # uddokta.studio
 
-Marketing site for Uddokta, the Bangla-first commerce app for Facebook and cash-on-delivery sellers. Astro + Tailwind, fully static, deployed to GitHub Pages by `.github/workflows/astro.yml` on every push to `main`.
+Marketing site for Uddokta Studio, the Bangla-first commerce app for Facebook and cash-on-delivery sellers. Astro + Tailwind, fully static, deployed to GitHub Pages by `.github/workflows/astro.yml` on every push to `main`.
 
 ```sh
 yarn install

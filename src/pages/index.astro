@@ -19,28 +19,28 @@ const steps = [
 ];
 
 const tools = [
-  { icon: "boxes", title: "স্টক ও ওয়্যারহাউস", body: "সব পণ্যের স্টক এক তালিকায়, স্প্রেডশিটের মতো এডিট করুন। একাধিক গুদামের হিসাব আলাদা রাখুন।" },
-  { icon: "ticket", title: "কুপন ও ডিসকাউন্ট", body: "কুপন কোড দিয়ে ছাড় দিন, কতবার ব্যবহার হবে তা ঠিক করে দিন।" },
-  { icon: "repeat", title: "রিপিট সেল", body: "যাদের অর্ডার ডেলিভারি হয়েছে কিন্তু আর কেনেননি, তাদের ফোন করার তালিকা নিজে থেকেই তৈরি হয়।" },
-  { icon: "chart", title: "লাভের হিসাব", body: "ডেলিভারি হওয়া অর্ডার থেকে কেনা দাম বাদ দিয়ে আসল লাভ। শুধু মালিক আর অ্যাডমিন দেখতে পান।" },
-  { icon: "image", title: "মিডিয়া গ্যালারি", body: "ছবি আপলোডের সময় নিজে থেকে ছোট হয়। কোন ছবি কোথায় ব্যবহার হচ্ছে দেখা যায়।" },
-  { icon: "users", title: "টিম ও অনুমতি", body: "হোয়াটসঅ্যাপে আমন্ত্রণ লিংক পাঠিয়ে স্টাফ যোগ করুন। স্টাফ কেনা দাম দেখতে পান না।" },
-  { icon: "store", title: "অনলাইন স্টোর", body: "ল্যান্ডিং পেজের পাশাপাশি পুরো দোকান: কালেকশন, মেনু আর এক ক্লিকে স্টাইল বদল।" },
-  { icon: "globe", title: "নিজের ডোমেইন", body: "শুরুতে আপনার দোকানের ঠিকানা yourshop.uddokta.live। চাইলে নিজের ডোমেইনও যুক্ত করুন।" },
-  { icon: "target", title: "পিক্সেল ও ট্র্যাকিং", body: "Meta আর TikTok পিক্সেল আইডি বসিয়ে দিন, বিজ্ঞাপন থেকে কতটা বিক্রি আসছে বুঝুন।" },
+  { title: "স্টক ও ওয়্যারহাউস", body: "সব পণ্যের স্টক এক তালিকায়, স্প্রেডশিটের মতো এডিট করুন। একাধিক গুদামের হিসাব আলাদা রাখুন।" },
+  { title: "কুপন ও ডিসকাউন্ট", body: "কুপন কোড দিয়ে ছাড় দিন, কতবার ব্যবহার হবে তা ঠিক করে দিন।" },
+  { title: "রিপিট সেল", body: "যাদের অর্ডার ডেলিভারি হয়েছে কিন্তু আর কেনেননি, তাদের ফোন করার তালিকা নিজে থেকেই তৈরি হয়।" },
+  { title: "লাভের হিসাব", body: "ডেলিভারি হওয়া অর্ডার থেকে কেনা দাম বাদ দিয়ে আসল লাভ। শুধু মালিক আর অ্যাডমিন দেখতে পান।" },
+  { title: "মিডিয়া গ্যালারি", body: "ছবি আপলোডের সময় নিজে থেকে ছোট হয়। কোন ছবি কোথায় ব্যবহার হচ্ছে দেখা যায়।" },
+  { title: "টিম ও অনুমতি", body: "হোয়াটসঅ্যাপে আমন্ত্রণ লিংক পাঠিয়ে স্টাফ যোগ করুন। স্টাফ কেনা দাম দেখতে পান না।" },
+  { title: "অনলাইন স্টোর", body: "ল্যান্ডিং পেজের পাশাপাশি পুরো দোকান: কালেকশন, মেনু আর এক ক্লিকে স্টাইল বদল।" },
+  { title: "নিজের ডোমেইন", body: "শুরুতে আপনার দোকানের ঠিকানা yourshop.uddokta.live। চাইলে নিজের ডোমেইনও যুক্ত করুন।" },
+  { title: "পিক্সেল ও ট্র্যাকিং", body: "Meta আর TikTok পিক্সেল আইডি বসিয়ে দিন, বিজ্ঞাপন থেকে কতটা বিক্রি আসছে বুঝুন।" },
 ];
 
 const soon = [
-  { icon: "inbox", title: "ইনবক্স", body: "ফেসবুক পেজের সব মেসেজ এক জায়গায়।" },
-  { icon: "bot", title: "AI সেলসম্যান", body: "সাধারণ প্রশ্নের উত্তর আর অর্ডার নেওয়ায় সাহায্য।" },
-  { icon: "sms", title: "SMS", body: "অর্ডার নিশ্চিত আর ডেলিভারির খবর ক্রেতার ফোনে।" },
-  { icon: "card", title: "অনলাইন পেমেন্ট", body: "ক্যাশ অন ডেলিভারির পাশাপাশি অগ্রিম পেমেন্ট।" },
-  { icon: "truck", title: "Pathao কুরিয়ার", body: "Steadfast-এর পর আরও কুরিয়ার।" },
-  { icon: "layers", title: "কাস্টমার সেগমেন্ট", body: "কেনার ধরন অনুযায়ী কাস্টমার ভাগ করুন।" },
+  { title: "ইনবক্স", body: "ফেসবুক পেজের সব মেসেজ এক জায়গায়।" },
+  { title: "AI সেলসম্যান", body: "সাধারণ প্রশ্নের উত্তর আর অর্ডার নেওয়ায় সাহায্য।" },
+  { title: "SMS", body: "অর্ডার নিশ্চিত আর ডেলিভারির খবর ক্রেতার ফোনে।" },
+  { title: "অনলাইন পেমেন্ট", body: "ক্যাশ অন ডেলিভারির পাশাপাশি অগ্রিম পেমেন্ট।" },
+  { title: "Pathao কুরিয়ার", body: "Steadfast-এর পর আরও কুরিয়ার।" },
+  { title: "কাস্টমার সেগমেন্ট", body: "কেনার ধরন অনুযায়ী কাস্টমার ভাগ করুন।" },
 ];
 
 const faqs = [
-  { q: "উদ্যোক্তা কাদের জন্য?", a: "যারা ফেসবুক বা অন্য সোশ্যাল মিডিয়ায় বিজ্ঞাপন দিয়ে ক্যাশ অন ডেলিভারিতে পণ্য বিক্রি করেন। একজন একা দোকান চালালেও চলবে, ছোট টিম থাকলেও।" },
+  { q: "উদ্যোক্তা স্টুডিও কাদের জন্য?", a: "যারা ফেসবুক বা অন্য সোশ্যাল মিডিয়ায় বিজ্ঞাপন দিয়ে ক্যাশ অন ডেলিভারিতে পণ্য বিক্রি করেন। একজন একা দোকান চালালেও চলবে, ছোট টিম থাকলেও।" },
   { q: "ওয়েবসাইট বানাতে কোডিং জানা লাগবে?", a: "না। তৈরি লেআউট থেকে শুরু করে সেকশন টেনে সাজাতে পারবেন, পাশেই দেখবেন ফোনে পেজটি কেমন দেখাবে। সব কাজ বাংলায়।" },
   { q: "ভুয়া অর্ডার কীভাবে আটকায়?", a: "যে নম্বর বারবার অর্ডার করে পার্সেল নেয় না, সেটি ব্লক করে দিন, সেই নম্বর থেকে পেজে আর অর্ডার আসবে না। এক নম্বর থেকে এক ঘণ্টায় পাঁচটির বেশি অর্ডার নেওয়া হয় না, আর একই পণ্য ২৪ ঘণ্টার মধ্যে আবার অর্ডার হলে আলাদা চিহ্ন দেখায়।" },
   { q: "কোন কুরিয়ারের সাথে কাজ করে?", a: "এখন Steadfast। আপনার Steadfast অ্যাকাউন্ট যুক্ত করলে অর্ডার পেজ থেকেই বুক করতে পারবেন। Pathao আসছে।" },
@@ -52,7 +52,7 @@ const faqs = [
 const bn = (n: number) => n.toLocaleString("bn-BD");
 ---
 
-<Layout title="উদ্যোক্তা | ফেসবুক সেলারদের জন্য ল্যান্ডিং পেজ, অর্ডার আর কুরিয়ার">
+<Layout title="উদ্যোক্তা স্টুডিও | ফেসবুক সেলারদের জন্য ল্যান্ডিং পেজ, অর্ডার আর কুরিয়ার">
   <!-- Hero -->
   <section class="relative overflow-hidden">
     <div class="section pt-14 sm:pt-20 text-center">
@@ -107,8 +107,7 @@ const bn = (n: number) => n.toLocaleString("bn-BD");
       <!-- Landing pages -->
       <div class="mt-12 grid gap-10 lg:grid-cols-2 items-center">
         <div>
-          <span class="inline-flex w-9 h-9 items-center justify-center rounded-control bg-primary-soft text-primary"><Icon name="layout" /></span>
-          <h3 class="mt-4 text-[22px] sm:text-[26px] font-bold text-ink leading-snug">অর্ডার ফর্মসহ ল্যান্ডিং পেজ</h3>
+          <h3 class="text-[22px] sm:text-[26px] font-bold text-ink leading-snug">অর্ডার ফর্মসহ ল্যান্ডিং পেজ</h3>
           <p class="mt-3 text-muted leading-relaxed">একটি পণ্যের জন্য এক পাতার পেজ, যা ফোনে দ্রুত খোলে আর সরাসরি অর্ডার নেয়। বিজ্ঞাপনের লিংক এখানেই দিন।</p>
           <ul class="mt-5 space-y-2.5 text-[14px] text-ink-2">
             <li class="flex gap-2.5"><Icon name="check" class="text-primary shrink-0 mt-0.5" />খালি পাতা, অথবা পণ্যের নাম আর ছবি বসানো তৈরি লেআউট থেকে শুরু করুন</li>
@@ -149,8 +148,7 @@ const bn = (n: number) => n.toLocaleString("bn-BD");
       <!-- Orders -->
       <div class="mt-20 grid gap-10 lg:grid-cols-2 items-center">
         <div class="lg:order-2">
-          <span class="inline-flex w-9 h-9 items-center justify-center rounded-control bg-primary-soft text-primary"><Icon name="bag" /></span>
-          <h3 class="mt-4 text-[22px] sm:text-[26px] font-bold text-ink leading-snug">নতুন থেকে ডেলিভারি পর্যন্ত সব অর্ডার</h3>
+          <h3 class="text-[22px] sm:text-[26px] font-bold text-ink leading-snug">নতুন থেকে ডেলিভারি পর্যন্ত সব অর্ডার</h3>
           <p class="mt-3 text-muted leading-relaxed">পেজ থেকে আসা আর ফোনে নেওয়া অর্ডার একই তালিকায়। প্রতিটি অর্ডার কোন ধাপে আছে, এক নজরে দেখুন।</p>
           <ul class="mt-5 space-y-2.5 text-[14px] text-ink-2">
             <li class="flex gap-2.5"><Icon name="check" class="text-primary shrink-0 mt-0.5" />অর্ডারের সাথে সাথে স্টক কমে, বাতিল বা ফেরত হলে ফিরে আসে</li>
@@ -195,8 +193,7 @@ const bn = (n: number) => n.toLocaleString("bn-BD");
       <!-- Protection and incomplete orders -->
       <div class="mt-20 grid gap-10 lg:grid-cols-2 items-center">
         <div>
-          <span class="inline-flex w-9 h-9 items-center justify-center rounded-control bg-primary-soft text-primary"><Icon name="shield" /></span>
-          <h3 class="mt-4 text-[22px] sm:text-[26px] font-bold text-ink leading-snug">ভুয়া অর্ডার কমান, হারানো অর্ডার ফেরান</h3>
+          <h3 class="text-[22px] sm:text-[26px] font-bold text-ink leading-snug">ভুয়া অর্ডার কমান, হারানো অর্ডার ফেরান</h3>
           <p class="mt-3 text-muted leading-relaxed">ক্যাশ অন ডেলিভারিতে বড় ক্ষতি হয় ফেরত আসা পার্সেলে। কে আসল ক্রেতা, তা অর্ডারের সময়েই বোঝার ব্যবস্থা।</p>
           <ul class="mt-5 space-y-2.5 text-[14px] text-ink-2">
             <li class="flex gap-2.5"><Icon name="check" class="text-primary shrink-0 mt-0.5" />সমস্যার নম্বর ব্লক করুন, সেই নম্বর থেকে পেজে আর অর্ডার আসবে না</li>
@@ -242,8 +239,7 @@ const bn = (n: number) => n.toLocaleString("bn-BD");
       <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {tools.map((t) => (
           <div class="card p-5">
-            <span class="inline-flex w-9 h-9 items-center justify-center rounded-control bg-paper-3 text-ink"><Icon name={t.icon} /></span>
-            <h3 class="mt-4 text-[16px] font-semibold text-ink">{t.title}</h3>
+            <h3 class="text-[16px] font-semibold text-ink">{t.title}</h3>
             <p class="mt-1.5 text-sm text-muted leading-relaxed">{t.body}</p>
           </div>
         ))}
@@ -258,7 +254,7 @@ const bn = (n: number) => n.toLocaleString("bn-BD");
         <div>
           <p class="text-[13px] font-semibold text-frame-active">বাংলাদেশের জন্য বানানো</p>
           <h2 class="mt-2 text-[24px] sm:text-[32px] font-bold leading-snug">বিদেশি সফটওয়্যার মানিয়ে নেওয়া নয়, শুরু থেকেই এখানকার বিক্রির ধরনে</h2>
-          <p class="mt-3 text-frame-muted leading-relaxed">বেশিরভাগ বিদেশি প্ল্যাটফর্ম বানানো কার্ড পেমেন্টের জন্য। এখানে বিক্রি হয় ফেসবুক বিজ্ঞাপন, ফোনে নিশ্চিত করা আর ক্যাশ অন ডেলিভারিতে। উদ্যোক্তা সেই পথ ধরেই সাজানো।</p>
+          <p class="mt-3 text-frame-muted leading-relaxed">বেশিরভাগ বিদেশি প্ল্যাটফর্ম বানানো কার্ড পেমেন্টের জন্য। এখানে বিক্রি হয় ফেসবুক বিজ্ঞাপন, ফোনে নিশ্চিত করা আর ক্যাশ অন ডেলিভারিতে। উদ্যোক্তা স্টুডিও সেই পথ ধরেই সাজানো।</p>
         </div>
         <ul class="grid gap-3 sm:grid-cols-2 self-center">
           {[
@@ -286,7 +282,6 @@ const bn = (n: number) => n.toLocaleString("bn-BD");
       <div class="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {soon.map((s) => (
           <div class="flex gap-3 rounded-card border border-dashed border-rule-strong p-4">
-            <span class="inline-flex w-9 h-9 shrink-0 items-center justify-center rounded-control bg-paper-2 text-muted"><Icon name={s.icon} /></span>
             <div>
               <div class="flex items-center gap-2"><h3 class="text-[15px] font-semibold text-ink">{s.title}</h3><span class="badge badge-plain">আসছে</span></div>
               <p class="mt-1 text-[13px] text-muted">{s.body}</p>

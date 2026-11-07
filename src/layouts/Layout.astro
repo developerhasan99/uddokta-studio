@@ -6,7 +6,7 @@ import "../styles/global.css";
 interface Props { title: string; description?: string }
 const {
   title,
-  description = "উদ্যোক্তা: ফেসবুক আর ক্যাশ অন ডেলিভারিতে বিক্রি করা সেলারদের জন্য ল্যান্ডিং পেজ, অর্ডার, ভুয়া অর্ডার সুরক্ষা, কুরিয়ার বুকিং আর লাভের হিসাব, বাংলায়।",
+  description = "উদ্যোক্তা স্টুডিও: ফেসবুক আর ক্যাশ অন ডেলিভারিতে বিক্রি করা সেলারদের জন্য ল্যান্ডিং পেজ, অর্ডার, ভুয়া অর্ডার সুরক্ষা, কুরিয়ার বুকিং আর লাভের হিসাব, বাংলায়।",
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -20,7 +20,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="উদ্যোক্তা" />
+    <meta property="og:site_name" content="উদ্যোক্তা স্টুডিও" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
