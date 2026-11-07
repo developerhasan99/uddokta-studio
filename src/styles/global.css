@@ -1,82 +1,87 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* Same values as the dashboard's tokens.css, so the site and the app look like one product. */
 :root {
-  --studio-red: #dc2626;
-  --grid-color: rgba(0, 0, 0, 0.02);
+  --color-frame: oklch(14% 0 0); --color-frame-2: oklch(26% 0 0); --color-frame-3: oklch(32% 0 0);
+  --color-frame-ink: oklch(98% 0 0); --color-frame-muted: oklch(78% 0 0); --color-frame-rule: oklch(40% 0 0);
+  --color-frame-active: oklch(80% 0.15 155);
+
+  --color-paper: oklch(100% 0 0); --color-paper-2: oklch(97.5% 0.002 155); --color-paper-3: oklch(94.5% 0.003 155);
+  --color-ink: oklch(20% 0 0); --color-ink-2: oklch(36% 0 0); --color-muted: oklch(48% 0 0);
+  --color-rule: oklch(94% 0 0); --color-rule-strong: oklch(90% 0 0);
+  --color-primary: oklch(45% 0.12 155); --color-primary-2: oklch(39% 0.11 155); --color-primary-soft: oklch(95% 0.04 155);
+  --color-focus: oklch(52% 0.13 155);
+
+  --color-info: oklch(32% 0.08 235); --color-info-soft: oklch(87% 0.07 225);
+  --color-warning: oklch(36% 0.08 75); --color-warning-soft: oklch(89% 0.1 88);
+  --color-success: oklch(32% 0.09 140); --color-success-soft: oklch(89% 0.15 130);
+  --color-error: oklch(46% 0.17 27); --color-error-soft: oklch(92% 0.05 27);
+
+  --shadow-btn: inset 0 -1px 0 0 oklch(72% 0 0), inset 0 0 0 1px oklch(0% 0 0 / 0.1), inset 0 1px 0 1px oklch(100% 0 0);
+  --shadow-btn-pressed: inset 0 1px 2px oklch(0% 0 0 / 0.22), inset 0 0 0 1px oklch(0% 0 0 / 0.12);
+  --shadow-btn-fill: inset 0 -1px 0 1px oklch(0% 0 0 / 0.32), inset 0 0 0 1px oklch(0% 0 0 / 0.22), inset 0 1px 0 1px oklch(100% 0 0 / 0.28);
+  --shadow-btn-fill-pressed: inset 0 2px 3px oklch(0% 0 0 / 0.4), inset 0 0 0 1px oklch(0% 0 0 / 0.25);
+  --shadow-card: 0 1px 2px color-mix(in oklab, var(--color-ink) 5%, transparent);
+  --shadow-menu: 0 4px 16px color-mix(in oklab, var(--color-ink) 18%, transparent);
 }
 
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
 body {
-  font-family: "Anek Bangla", "Inter", sans-serif;
-  background-color: #fcfcfc;
-  color: #0f172a;
-  scroll-behavior: smooth;
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: Inter, "Noto Sans Bengali", ui-sans-serif, system-ui, sans-serif;
+  font-size: 15px;
   line-height: 1.6;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
+::selection { background: var(--color-primary); color: #fff; }
+:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
 
-.bg-grid {
-  background-image:
-    linear-gradient(var(--grid-color) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-  background-size: 100px 100px;
-}
-
-.font-display {
-  font-family: "Anek Bangla", sans-serif;
-  letter-spacing: -0.01em;
-}
-
-/* Smooth transitions for rounded elements */
-* {
-  transition:
-    background-color 0.4s cubic-bezier(0.23, 1, 0.32, 1),
-    border-color 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.btn-rounded {
-  border-radius: 9999px;
-}
-
-.card-rounded {
-  border-radius: 2.5rem;
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #f8fafc;
-}
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #dc2626;
-}
-
-::selection {
-  background: #dc2626;
-  color: #ffffff;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+@layer components {
+  /* Tactile buttons, like the dashboard: a bevel that inverts when pressed. */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 h-10 px-4 rounded-control text-sm font-semibold whitespace-nowrap no-underline select-none;
+    background: var(--color-paper); color: var(--color-ink); box-shadow: var(--shadow-btn);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .btn:hover { background: var(--color-paper-2); }
+  .btn:active { box-shadow: var(--shadow-btn-pressed); }
+  .btn-primary { background: var(--color-primary); color: #fff; box-shadow: var(--shadow-btn-fill); }
+  .btn-primary:hover { background: var(--color-primary-2); }
+  .btn-primary:active { box-shadow: var(--shadow-btn-fill-pressed); }
+  .btn-dark { background: var(--color-frame-2); color: var(--color-frame-ink); box-shadow: var(--shadow-btn-fill); }
+  .btn-dark:hover { background: var(--color-frame-3); }
+  .btn-sm { @apply h-8 px-3 text-[13px]; }
+
+  .card { @apply rounded-card border border-rule bg-paper; box-shadow: var(--shadow-card); }
+  .eyebrow { @apply inline-flex items-center gap-2 text-[13px] font-semibold text-primary; }
+  .section { @apply max-w-site mx-auto px-4 sm:px-6; }
+  .section-title { @apply text-[26px] sm:text-[36px] leading-[1.25] font-bold tracking-tight text-ink; }
+  .section-lead { @apply mt-3 text-[15px] sm:text-base text-muted max-w-2xl; }
+
+  .badge { @apply inline-flex items-center h-5 px-2 rounded-full text-[11px] font-semibold whitespace-nowrap; }
+  .badge-new { background: var(--color-info-soft); color: var(--color-info); }
+  .badge-ok { background: var(--color-success-soft); color: var(--color-success); }
+  .badge-warn { background: var(--color-warning-soft); color: var(--color-warning); }
+  .badge-bad { background: var(--color-error-soft); color: var(--color-error); }
+  .badge-plain { background: var(--color-paper-3); color: var(--color-ink-2); }
+
+  .field { @apply h-8 rounded-control border border-rule-strong bg-paper px-2.5 text-[12px] text-muted flex items-center; }
 }
 
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-  opacity: 0;
-}
+/* Blog article text */
+.article h2 { @apply text-2xl font-bold mt-10 mb-4 text-ink; }
+.article h3 { @apply text-xl font-bold mt-8 mb-3 text-ink; }
+.article p { @apply my-4 text-ink-2 leading-[1.85]; }
+.article ul, .article ol { @apply my-4 pl-6 text-ink-2; }
+.article ul { list-style: disc; }
+.article ol { list-style: decimal; }
+.article li { @apply my-1.5; }
+.article a { @apply text-primary underline; }
+.article blockquote { @apply my-6 border-l-4 border-primary bg-paper-2 px-5 py-4 rounded-r-control text-ink font-medium; }
+.article strong { @apply text-ink font-semibold; }
 
-/* Whatsapp Button */
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

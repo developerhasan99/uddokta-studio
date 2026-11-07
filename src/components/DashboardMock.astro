@@ -1,0 +1,93 @@
+---
+// A drawn copy of the dashboard's Home screen. Every figure here is sample data and says so.
+import Icon from "./Icon.astro";
+
+const nav = [
+  { icon: "home", name: "হোম", active: true },
+  { icon: "bag", name: "অর্ডার" },
+  { icon: "tag", name: "পণ্য" },
+  { icon: "users", name: "কাস্টমার" },
+  { icon: "ticket", name: "ডিসকাউন্ট" },
+  { icon: "image", name: "মিডিয়া" },
+  { icon: "chart", name: "হিসাব" },
+];
+const channels = [
+  { icon: "layout", name: "ল্যান্ডিং পেজ" },
+  { icon: "store", name: "অনলাইন স্টোর" },
+];
+const stats = [
+  { label: "আজকের অর্ডার", value: "২৪", points: "0,18 10,15 20,16 30,10 40,12 50,6 60,4" },
+  { label: "বিক্রি", value: "৳৩৮,৪৫০", points: "0,16 10,17 20,12 30,13 40,8 50,9 60,3" },
+  { label: "ডেলিভারি হার", value: "৮৭%", points: "0,10 10,9 20,11 30,8 40,7 50,8 60,6" },
+  { label: "লাভ", value: "৳১১,২০০", points: "0,19 10,14 20,15 30,11 40,12 50,7 60,5" },
+];
+const orders = [
+  { no: "#১০৪২", name: "রাফিয়া সুলতানা", item: "কটন থ্রি-পিস", total: "৳১,৮৫০", status: "নতুন", cls: "badge-new" },
+  { no: "#১০৪১", name: "তানভীর আহমেদ", item: "লেদার ওয়ালেট", total: "৳৯৯০", status: "নিশ্চিত", cls: "badge-ok" },
+  { no: "#১০৪০", name: "নুসরাত জাহান", item: "হিজাব সেট", total: "৳১,২৬০", status: "কুরিয়ারে", cls: "badge-warn" },
+  { no: "#১০৩৯", name: "সাকিব হাসান", item: "স্মার্ট ওয়াচ", total: "৳২,৪৯০", status: "ডেলিভারি হয়েছে", cls: "badge-plain" },
+];
+---
+<div class="rounded-panel bg-frame p-1.5 sm:p-2 shadow-[0_24px_60px_-20px_oklch(0%_0_0/0.45)]" role="img" aria-label="উদ্যোক্তা ড্যাশবোর্ডের হোম পেজ, নমুনা তথ্যসহ">
+  <div class="flex gap-2" aria-hidden="true">
+    <aside class="hidden md:flex w-[168px] shrink-0 flex-col py-2 px-1.5 text-[12.5px] text-frame-muted">
+      <div class="flex items-center gap-2 px-2 pb-3 text-frame-ink font-semibold text-[14px]">
+        <img src="/favicon.svg" width="20" height="20" alt="" /> উদ্যোক্তা
+      </div>
+      {nav.map((n) => (
+        <div class={`flex items-center gap-2 h-[30px] px-2 rounded-[6px] ${n.active ? "bg-frame-3 text-frame-ink" : ""}`}>
+          <Icon name={n.icon} size={15} class={n.active ? "text-frame-active" : ""} /> {n.name}
+        </div>
+      ))}
+      <div class="px-2 pt-3 pb-1 text-[11px] text-frame-muted/70">বিক্রির মাধ্যম</div>
+      {channels.map((n) => (
+        <div class="flex items-center gap-2 h-[30px] px-2"><Icon name={n.icon} size={15} /> {n.name}</div>
+      ))}
+      <div class="mt-auto flex items-center gap-2 h-[30px] px-2"><Icon name="settings" size={15} /> সেটিংস</div>
+    </aside>
+
+    <div class="flex-1 min-w-0 rounded-[11px] bg-paper-2 p-3 sm:p-5">
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <div class="text-[18px] sm:text-[22px] font-bold text-ink leading-tight">হোম</div>
+          <div class="text-[12px] text-muted mt-0.5">দোকান চালু করার ধাপ আর বিক্রির হিসাব।</div>
+        </div>
+        <span class="badge badge-plain shrink-0">নমুনা তথ্য</span>
+      </div>
+
+      <div class="mt-4 grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3">
+        {stats.map((s) => (
+          <div class="card p-3">
+            <div class="text-[11.5px] text-muted">{s.label}</div>
+            <div class="mt-1 flex items-end justify-between gap-2">
+              <div class="text-[16px] sm:text-[18px] font-bold text-ink leading-none">{s.value}</div>
+              <svg width="60" height="22" viewBox="0 0 60 22" class="text-primary shrink-0">
+                <polyline points={s.points} fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" stroke-linecap="round" />
+              </svg>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="card mt-3 overflow-hidden">
+        <div class="flex items-center justify-between px-3 h-10 border-b border-rule">
+          <div class="text-[13px] font-semibold">সাম্প্রতিক অর্ডার</div>
+          <div class="text-[12px] text-primary font-medium">সব দেখুন</div>
+        </div>
+        <table class="w-full text-[12px]">
+          <tbody>
+            {orders.map((o) => (
+              <tr class="border-b border-rule last:border-0">
+                <td class="px-3 h-9 font-medium text-ink whitespace-nowrap">{o.no}</td>
+                <td class="px-2 text-ink-2 whitespace-nowrap">{o.name}</td>
+                <td class="px-2 text-muted whitespace-nowrap hidden sm:table-cell">{o.item}</td>
+                <td class="px-2 text-ink whitespace-nowrap text-right">{o.total}</td>
+                <td class="px-3 text-right"><span class={`badge ${o.cls}`}>{o.status}</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

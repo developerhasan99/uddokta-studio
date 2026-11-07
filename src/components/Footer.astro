@@ -1,0 +1,37 @@
+---
+import Logo from "./Logo.astro";
+import Icon from "./Icon.astro";
+import { SIGNUP_URL, LOGIN_URL, PHONE, PHONE_TEL, WHATSAPP_URL, EMAIL } from "../site";
+---
+<footer id="contact" class="bg-frame text-frame-muted">
+  <div class="section py-14 grid gap-10 md:grid-cols-12">
+    <div class="md:col-span-5">
+      <Logo dark />
+      <p class="mt-4 text-sm leading-relaxed max-w-sm">
+        বাংলাদেশের অনলাইন সেলারদের জন্য বাংলায় বানানো কমার্স সফটওয়্যার। ল্যান্ডিং পেজ, ক্যাশ অন ডেলিভারি অর্ডার, কুরিয়ার আর লাভের হিসাব, সব এক জায়গায়।
+      </p>
+    </div>
+    <div class="md:col-span-3">
+      <h2 class="text-xs font-semibold text-frame-ink mb-4">উদ্যোক্তা</h2>
+      <ul class="space-y-2.5 text-sm">
+        <li><a href="/#features" class="hover:text-frame-ink no-underline">ফিচার</a></li>
+        <li><a href="/#how" class="hover:text-frame-ink no-underline">কীভাবে কাজ করে</a></li>
+        <li><a href="/#faq" class="hover:text-frame-ink no-underline">প্রশ্ন ও উত্তর</a></li>
+        <li><a href="/blog" class="hover:text-frame-ink no-underline">ব্লগ</a></li>
+        <li><a href={LOGIN_URL} class="hover:text-frame-ink no-underline">লগইন</a></li>
+        <li><a href={SIGNUP_URL} class="hover:text-frame-ink no-underline">অ্যাকাউন্ট খুলুন</a></li>
+      </ul>
+    </div>
+    <div class="md:col-span-4">
+      <h2 class="text-xs font-semibold text-frame-ink mb-4">যোগাযোগ</h2>
+      <ul class="space-y-3 text-sm">
+        <li><a href={WHATSAPP_URL} class="inline-flex items-center gap-2.5 hover:text-frame-ink no-underline"><Icon name="message" size={16} /> হোয়াটসঅ্যাপে মেসেজ দিন</a></li>
+        <li><a href={`tel:${PHONE_TEL}`} class="inline-flex items-center gap-2.5 hover:text-frame-ink no-underline"><Icon name="phone" size={16} /> {PHONE}</a></li>
+        <li><a href={`mailto:${EMAIL}`} class="inline-flex items-center gap-2.5 hover:text-frame-ink no-underline"><Icon name="mail" size={16} /> {EMAIL}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-frame-rule">
+    <div class="section py-5 text-xs">© ২০২৬ উদ্যোক্তা। সব স্বত্ব সংরক্ষিত।</div>
+  </div>
+</footer>

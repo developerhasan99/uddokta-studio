@@ -1,8 +1,19 @@
 import { defineConfig } from "astro/config";
-import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 
-// https://astro.build/config
+// The agency pages were retired when the site became the Uddokta product site.
 export default defineConfig({
-  integrations: [react(), tailwind()],
+  site: "https://uddokta.studio",
+  integrations: [tailwind()],
+  redirects: {
+    "/about": "/",
+    "/portfolio": "/",
+    "/contact": "/#contact",
+    "/services/digital-strategy": "/#features",
+    "/services/ui-ux-design": "/#features",
+    "/services/web-development": "/#features",
+    "/services/app-solution": "/#features",
+    "/services/brand-growth": "/#features",
+    "/services/ecommerce-solution": "/#features",
+  },
 });

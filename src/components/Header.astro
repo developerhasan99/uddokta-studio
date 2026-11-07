@@ -1,0 +1,45 @@
+---
+import Logo from "./Logo.astro";
+import Icon from "./Icon.astro";
+import { SIGNUP_URL, LOGIN_URL } from "../site";
+
+const links = [
+  { name: "ফিচার", href: "/#features" },
+  { name: "কীভাবে কাজ করে", href: "/#how" },
+  { name: "প্রশ্ন ও উত্তর", href: "/#faq" },
+  { name: "ব্লগ", href: "/blog" },
+];
+---
+<header class="sticky top-0 z-50 bg-paper border-b border-rule">
+  <div class="section h-16 flex items-center justify-between gap-6">
+    <Logo />
+    <nav class="hidden md:flex items-center gap-7" aria-label="প্রধান মেনু">
+      {links.map((l) => <a href={l.href} class="text-sm font-medium text-ink-2 hover:text-primary no-underline">{l.name}</a>)}
+    </nav>
+    <div class="hidden md:flex items-center gap-2">
+      <a href={LOGIN_URL} class="btn btn-sm">লগইন</a>
+      <a href={SIGNUP_URL} class="btn btn-sm btn-primary">অ্যাকাউন্ট খুলুন</a>
+    </div>
+    <details class="md:hidden group">
+      <summary class="list-none btn btn-sm w-8 px-0 [&::-webkit-details-marker]:hidden" aria-label="মেনু">
+        <Icon name="menu" class="group-open:hidden" />
+        <Icon name="close" class="hidden group-open:block" />
+      </summary>
+      <div class="absolute left-0 right-0 top-16 bg-paper border-b border-rule px-4 pb-4" style="box-shadow: var(--shadow-menu)">
+        <nav class="flex flex-col py-2" aria-label="মোবাইল মেনু">
+          {links.map((l) => <a href={l.href} class="py-2.5 text-[15px] font-medium text-ink no-underline border-b border-rule last:border-0">{l.name}</a>)}
+        </nav>
+        <div class="grid grid-cols-2 gap-2 pt-2">
+          <a href={LOGIN_URL} class="btn btn-sm">লগইন</a>
+          <a href={SIGNUP_URL} class="btn btn-sm btn-primary">অ্যাকাউন্ট খুলুন</a>
+        </div>
+      </div>
+    </details>
+  </div>
+</header>
+<script>
+  // Close the phone menu after a link is tapped (anchor links stay on the same page).
+  document.querySelectorAll("header details a").forEach((a) =>
+    a.addEventListener("click", () => a.closest("details")?.removeAttribute("open")),
+  );
+</script>

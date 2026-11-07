@@ -1,0 +1,8 @@
+---
+interface Props { dark?: boolean }
+const { dark = false } = Astro.props;
+---
+<a href="/" class={`inline-flex items-center gap-2 font-semibold text-[17px] no-underline ${dark ? "text-frame-ink" : "text-ink"}`}>
+  <img src="/favicon.svg" width="28" height="28" alt="" />
+  উদ্যোক্তা
+</a>
