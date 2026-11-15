@@ -20,8 +20,8 @@ const copy = {
     howLead: "আলাদা আলাদা অ্যাপ, শিট আর খাতার দরকার নেই। প্রতিটি ধাপ একই ড্যাশবোর্ডে।",
     steps: [
       { title: "পণ্য যোগ করুন", body: "ছবি, দাম, সাইজ-রঙের ভ্যারিয়েন্ট আর স্টক। একবার ছবি আপলোড করলে সব পেজে ব্যবহার করা যায়।" },
-      { title: "ল্যান্ডিং পেজ বানান", body: "তৈরি লেআউট বেছে নিন, সেকশন সাজান, প্রকাশ করুন। লিংকটি ফেসবুক বিজ্ঞাপনে বসিয়ে দিন।" },
-      { title: "অর্ডার আসুক", body: "ক্রেতা নাম, মোবাইল আর ঠিকানা দিয়ে অর্ডার করেন। দাম আর ডেলিভারি চার্জ সিস্টেম নিজেই হিসাব করে।" },
+      { title: "ল্যান্ডিং পেজ বানান", body: "খালি পাতায় সেকশন আর উপাদান টেনে সাজান, প্রকাশ করুন। লিংকটি ফেসবুক বিজ্ঞাপনে বসিয়ে দিন।" },
+      { title: "অর্ডার আসুক", body: "ক্রেতা নাম, মোবাইল, ঠিকানা দিয়ে ডেলিভারি অপশন বেছে অর্ডার করেন। দাম, ছাড় আর ডেলিভারি চার্জ সিস্টেম নিজেই হিসাব করে।" },
       { title: "নিশ্চিত করে পাঠান", body: "ফোনে নিশ্চিত করুন, এক ক্লিকে কুরিয়ার বুক করুন। ডেলিভারি হলে আসল লাভ দেখুন।" },
     ],
     featuresEyebrow: "ফিচার",
@@ -32,11 +32,12 @@ const copy = {
       title: "অর্ডার ফর্মসহ ল্যান্ডিং পেজ",
       body: "একটি পণ্যের জন্য এক পাতার পেজ, যা ফোনে দ্রুত খোলে আর সরাসরি অর্ডার নেয়। বিজ্ঞাপনের লিংক এখানেই দিন।",
       points: [
-        "খালি পাতা, অথবা পণ্যের নাম আর ছবি বসানো তৈরি লেআউট থেকে শুরু করুন",
-        "সেকশন যোগ করুন, টেনে সাজান, পাশেই লাইভ প্রিভিউ",
+        "খালি পাতায় গ্রিড, লেখা, ছবি, বোতাম আর ভিডিও টেনে সাজান, পাশেই লাইভ প্রিভিউ",
+        "অর্ডার ফর্ম, রিভিউ আর প্রশ্নোত্তরের মতো তৈরি ব্লক যেকোনো জায়গায় বসান",
+        "পেজেই ক্লিক করে লেখা বদলান; ফোন, ডেস্কটপ আর হোভারের জন্য আলাদা স্টাইল",
+        "বাংলা ও ইংরেজি ফন্ট, কাস্টম CSS আর কাস্টম HTML, যখন দরকার",
         "খসড়া সেভ হয়, লাইভ পেজ বদলায় শুধু প্রকাশ করলে",
-        "এক ক্লিকে পেজের কপি বানিয়ে নতুন অফার পরীক্ষা করুন",
-        "ঢাকার ভেতরে আর বাইরের ডেলিভারি চার্জ নিজে থেকে যোগ হয়",
+        "এক ক্লিকে কপি বানিয়ে নতুন অফার পরীক্ষা করুন, অথবা ফাইলে এক্সপোর্ট-ইমপোর্ট",
       ],
       label: "ফোনে একটি ল্যান্ডিং পেজ, অর্ডার ফর্মসহ, নমুনা",
       oldPrice: "৳২,২০০", product: "কটন থ্রি-পিস, হাতের কাজ", price: "৳১,৮৫০",
@@ -48,7 +49,7 @@ const copy = {
       body: "পেজ থেকে আসা আর ফোনে নেওয়া অর্ডার একই তালিকায়। প্রতিটি অর্ডার কোন ধাপে আছে, এক নজরে দেখুন।",
       points: [
         "অর্ডারের সাথে সাথে স্টক কমে, বাতিল বা ফেরত হলে ফিরে আসে",
-        "Steadfast-এ এক ক্লিকে বুকিং, দুবার চাপলেও দুবার বুক হয় না",
+        "Steadfast-এ এক ক্লিকে বুকিং (দুবার চাপলেও একবারই), অথবা নিজের লোক দিয়ে ডেলিভারি",
         "নাম, নম্বর, তারিখ দিয়ে খুঁজুন; পছন্দের ফিল্টার সেভ করে রাখুন",
         "ট্যাগ, নোট আর কে কখন কী বদলেছেন তার হিসাব",
         "দরকার হলে সব অর্ডার CSV ফাইলে নামিয়ে নিন",
@@ -83,7 +84,8 @@ const copy = {
     moreTitle: "দোকান চালানোর বাকি কাজও এখানেই",
     tools: [
       { title: "স্টক ও ওয়্যারহাউস", body: "সব পণ্যের স্টক এক তালিকায়, স্প্রেডশিটের মতো এডিট করুন। একাধিক গুদামের হিসাব আলাদা রাখুন।" },
-      { title: "কুপন ও ডিসকাউন্ট", body: "কুপন কোড দিয়ে ছাড় দিন, কতবার ব্যবহার হবে তা ঠিক করে দিন।" },
+      { title: "কুপন ও অফার", body: "কুপন কোড বা নিজে থেকে চালু অফার: টাকা বা শতাংশ ছাড়, একটা কিনলে আরেকটা ফ্রি, ফ্রি ডেলিভারি। তারিখ আর ব্যবহারের সীমা ঠিক করুন।" },
+      { title: "ডেলিভারি অপশন", body: "যত খুশি ডেলিভারি অপশন, ক্রেতা অর্ডারের সময় বেছে নেন। নির্দিষ্ট দাম বা পরিমাণের বেশি কিনলে ডেলিভারি ফ্রি।" },
       { title: "রিপিট সেল", body: "যাদের অর্ডার ডেলিভারি হয়েছে কিন্তু আর কেনেননি, তাদের ফোন করার তালিকা নিজে থেকেই তৈরি হয়।" },
       { title: "লাভের হিসাব", body: "ডেলিভারি হওয়া অর্ডার থেকে কেনা দাম বাদ দিয়ে আসল লাভ। শুধু মালিক আর অ্যাডমিন দেখতে পান।" },
       { title: "মিডিয়া গ্যালারি", body: "ছবি আপলোডের সময় নিজে থেকে ছোট হয়। কোন ছবি কোথায় ব্যবহার হচ্ছে দেখা যায়।" },
@@ -91,6 +93,8 @@ const copy = {
       { title: "অনলাইন স্টোর", body: "ল্যান্ডিং পেজের পাশাপাশি পুরো দোকান: কালেকশন, মেনু আর এক ক্লিকে স্টাইল বদল।" },
       { title: "নিজের ডোমেইন", body: "শুরুতে আপনার দোকানের ঠিকানা yourshop.uddokta.live। চাইলে নিজের ডোমেইনও যুক্ত করুন।" },
       { title: "পিক্সেল ও ট্র্যাকিং", body: "Meta আর TikTok পিক্সেল আইডি বসিয়ে দিন, বিজ্ঞাপন থেকে কতটা বিক্রি আসছে বুঝুন।" },
+      { title: "নোটিফিকেশন", body: "নতুন অর্ডার এলে ড্যাশবোর্ডের বেলে খবর, চাইলে ব্রাউজারে পপ-আপ আর শব্দ।" },
+      { title: "ইনভয়েস প্রিন্ট", body: "দোকানের নাম, লোগো আর ঠিকানাসহ অর্ডারের ইনভয়েস প্রিন্ট করুন।" },
     ],
     bd: {
       eyebrow: "বাংলাদেশের জন্য বানানো",
@@ -120,15 +124,15 @@ const copy = {
     faqLeadA: "উত্তর না পেলে ", faqLeadLink: "হোয়াটসঅ্যাপে", faqLeadB: " জিজ্ঞেস করুন।",
     faqs: [
       { q: `${BRAND.bn} কাদের জন্য?`, a: "যারা ফেসবুক বা অন্য সোশ্যাল মিডিয়ায় বিজ্ঞাপন দিয়ে ক্যাশ অন ডেলিভারিতে পণ্য বিক্রি করেন। একজন একা দোকান চালালেও চলবে, ছোট টিম থাকলেও।" },
-      { q: "ওয়েবসাইট বানাতে কোডিং জানা লাগবে?", a: "না। তৈরি লেআউট থেকে শুরু করে সেকশন টেনে সাজাতে পারবেন, পাশেই দেখবেন ফোনে পেজটি কেমন দেখাবে। সব কাজ বাংলায়।" },
+      { q: "ওয়েবসাইট বানাতে কোডিং জানা লাগবে?", a: "না। খালি পাতায় সেকশন আর উপাদান টেনে সাজাবেন, পাশেই দেখবেন ফোনে পেজটি কেমন দেখাবে। সব কাজ বাংলায়।" },
       { q: "ভুয়া অর্ডার কীভাবে আটকায়?", a: "যে নম্বর বারবার অর্ডার করে পার্সেল নেয় না, সেটি ব্লক করে দিন, সেই নম্বর থেকে পেজে আর অর্ডার আসবে না। এক নম্বর থেকে এক ঘণ্টায় পাঁচটির বেশি অর্ডার নেওয়া হয় না, আর একই পণ্য ২৪ ঘণ্টার মধ্যে আবার অর্ডার হলে আলাদা চিহ্ন দেখায়।" },
-      { q: "কোন কুরিয়ারের সাথে কাজ করে?", a: "এখন Steadfast। আপনার Steadfast অ্যাকাউন্ট যুক্ত করলে অর্ডার পেজ থেকেই বুক করতে পারবেন। Pathao আসছে।" },
+      { q: "কোন কুরিয়ারের সাথে কাজ করে?", a: "এখন Steadfast। আপনার Steadfast অ্যাকাউন্ট যুক্ত করলে অর্ডার পেজ থেকেই বুক করতে পারবেন। নিজের লোক দিয়ে ডেলিভারি দিলে সেটাও চালু করা যায়। Pathao আসছে।" },
       { q: "নিজের ডোমেইন ব্যবহার করা যাবে?", a: "হ্যাঁ। শুরুতে আপনার দোকান yourshop.uddokta.live ঠিকানায় থাকে। সেটিংসের ডোমেইন থেকে নিজের ডোমেইন যুক্ত করতে পারবেন।" },
       { q: "আমার দোকানের তথ্য কতটা নিরাপদ?", a: "প্রতিটি দোকানের তথ্য ডেটাবেসের স্তরেই আলাদা রাখা হয়, এক দোকান অন্যটির তথ্য দেখতে পারে না। কুরিয়ারের লগইন এনক্রিপ্ট করে রাখা হয়, আর কেনা দাম স্টাফদের কাছে লুকানো থাকে।" },
       { q: "খরচ কত?", a: "এখন যে কেউ অ্যাকাউন্ট খুলে ব্যবহার শুরু করতে পারেন। প্ল্যান আর দামের বিস্তারিত বিলিং চালু হওয়ার আগে জানিয়ে দেওয়া হবে।" },
     ],
     ctaTitle: "আজই প্রথম ল্যান্ডিং পেজ চালু করুন",
-    ctaLead: "অ্যাকাউন্ট খুলুন, দোকানের নাম দিন, একটি পণ্য যোগ করুন। তারপর তৈরি লেআউট থেকে প্রথম পেজ।",
+    ctaLead: "অ্যাকাউন্ট খুলুন, দোকানের নাম দিন, একটি পণ্য যোগ করুন। তারপর খালি পাতায় প্রথম পেজ সাজান।",
     ctaWhatsapp: "হোয়াটসঅ্যাপে কথা বলুন",
   },
   en: {
@@ -142,8 +146,8 @@ const copy = {
     howLead: "No more separate apps, sheets and notebooks. Every step lives in the same dashboard.",
     steps: [
       { title: "Add products", body: "Photos, prices, size and colour variants, and stock. Upload a photo once and use it on every page." },
-      { title: "Build a landing page", body: "Pick a ready-made layout, arrange the sections, publish. Then drop the link into your Facebook ad." },
-      { title: "Orders come in", body: "Buyers order with their name, phone and address. The system works out the price and delivery charge." },
+      { title: "Build a landing page", body: "Drag sections and elements onto a blank page, then publish. Drop the link into your Facebook ad." },
+      { title: "Orders come in", body: "Buyers enter their name, phone and address and pick a delivery option. The system works out the price, discount and delivery charge." },
       { title: "Confirm and ship", body: "Confirm by phone, book the courier in one click. See your real profit once it's delivered." },
     ],
     featuresEyebrow: "Features",
@@ -154,11 +158,12 @@ const copy = {
       title: "Landing pages with an order form",
       body: "A one-page site for a single product that opens fast on phones and takes orders directly. Point your ad link here.",
       points: [
-        "Start from a blank page, or a ready layout with the product name and photos filled in",
-        "Add sections, drag to reorder, with a live preview alongside",
+        "Drag grids, text, images, buttons and video onto a blank page, with a live preview alongside",
+        "Drop in ready-made blocks like the order form, reviews and FAQ anywhere",
+        "Click to edit text on the page; separate styles for phone, desktop and hover",
+        "Bangla and English fonts, custom CSS and custom HTML when you need them",
         "Drafts are saved; the live page changes only when you publish",
-        "Duplicate a page in one click to test a new offer",
-        "Delivery charges inside and outside Dhaka are added automatically",
+        "Duplicate a page in one click to test a new offer, or export and import it as a file",
       ],
       label: "A landing page with an order form on a phone, sample",
       oldPrice: "৳2,200", product: "Cotton three-piece, hand-embroidered", price: "৳1,850",
@@ -170,7 +175,7 @@ const copy = {
       body: "Orders from your pages and orders taken by phone sit in one list. See which stage each order is at, at a glance.",
       points: [
         "Stock goes down with each order and comes back on cancellation or return",
-        "One-click Steadfast booking; a double click never books twice",
+        "One-click Steadfast booking (a double click never books twice), or deliver with your own people",
         "Search by name, number or date, and save the filters you use",
         "Tags, notes and a record of who changed what, and when",
         "Download all your orders as a CSV file when you need to",
@@ -205,7 +210,8 @@ const copy = {
     moreTitle: "The rest of running a shop, here too",
     tools: [
       { title: "Stock and warehouses", body: "Stock for every product in one list, editable like a spreadsheet. Keep separate counts for each warehouse." },
-      { title: "Coupons and discounts", body: "Offer discounts with coupon codes and set how many times each can be used." },
+      { title: "Coupons and offers", body: "Coupon codes or automatic offers: amount or percent off, buy one get one, free delivery. Set dates and usage limits." },
+      { title: "Delivery options", body: "As many delivery options as you like, chosen by the buyer at checkout. Free delivery above a set amount or quantity." },
       { title: "Repeat sales", body: "A call list of customers whose orders were delivered but haven't bought again, built automatically." },
       { title: "Profit tracking", body: "Real profit from delivered orders, after cost price. Only owners and admins can see it." },
       { title: "Media gallery", body: "Photos are resized automatically on upload. See where each photo is being used." },
@@ -213,6 +219,8 @@ const copy = {
       { title: "Online store", body: "A full shop alongside your landing pages: collections, menus and one-click style changes." },
       { title: "Your own domain", body: "Your shop starts at yourshop.uddokta.live. Connect your own domain whenever you like." },
       { title: "Pixels and tracking", body: "Add your Meta and TikTok pixel IDs and see how many sales your ads bring in." },
+      { title: "Notifications", body: "A bell in the dashboard for new orders, plus optional browser pop-ups and sound." },
+      { title: "Printed invoices", body: "Print order invoices with your shop's name, logo and address." },
     ],
     bd: {
       eyebrow: "Made for Bangladesh",
@@ -242,15 +250,15 @@ const copy = {
     faqLeadA: "Can't find an answer? Ask us on ", faqLeadLink: "WhatsApp", faqLeadB: ".",
     faqs: [
       { q: `Who is ${BRAND.en} for?`, a: "Anyone who sells with cash on delivery through ads on Facebook or other social media. It works whether you run the shop alone or with a small team." },
-      { q: "Do I need to know how to code?", a: "No. Start from a ready-made layout and drag sections into place, with a preview of how the page looks on a phone right next to it. Everything is in Bangla." },
+      { q: "Do I need to know how to code?", a: "No. Drag sections and elements onto a blank page, with a preview of how it looks on a phone right next to it. The whole dashboard works in Bangla or English." },
       { q: "How does it stop fake orders?", a: "Block numbers that keep ordering and refusing parcels, and they can't order from your pages again. No more than five orders an hour are accepted from one number, and a repeat order for the same product within 24 hours is flagged." },
-      { q: "Which couriers does it work with?", a: "Steadfast for now. Connect your Steadfast account and book straight from the orders page. Pathao is coming." },
+      { q: "Which couriers does it work with?", a: "Steadfast for now. Connect your Steadfast account and book straight from the orders page. You can also turn on self delivery for your own riders. Pathao is coming." },
       { q: "Can I use my own domain?", a: "Yes. Your shop starts at yourshop.uddokta.live. Connect your own domain from Settings → Domains." },
       { q: "How safe is my shop's data?", a: "Each shop's data is kept separate at the database level, so no shop can see another's. Courier logins are stored encrypted, and cost prices are hidden from staff." },
       { q: "How much does it cost?", a: "Anyone can sign up and start using it now. Plan and pricing details will be announced before billing starts." },
     ],
     ctaTitle: "Launch your first landing page today",
-    ctaLead: "Sign up, name your shop, add a product. Then build your first page from a ready-made layout.",
+    ctaLead: "Sign up, name your shop, add a product. Then lay out your first page.",
     ctaWhatsapp: "Chat on WhatsApp",
   },
 };
@@ -337,7 +345,7 @@ const flowCls = ["badge-new", "badge-ok", "badge-plain", "badge-warn", "badge-ok
                   </div>
                 </div>
                 <div class="mt-3 flex justify-between text-[12.5px]"><span class="text-muted">{t.lp.total}</span><span class="font-bold text-ink">{t.lp.totalValue}</span></div>
-                <div class="mt-2 h-9 rounded-control bg-primary text-white text-[13px] font-semibold flex items-center justify-center" style="box-shadow: var(--shadow-btn-fill)">{t.lp.order}</div>
+                <div class="mt-2 btn btn-sm btn-primary w-full">{t.lp.order}</div>
               </div>
             </div>
           </div>
@@ -467,7 +475,7 @@ const flowCls = ["badge-new", "badge-ok", "badge-plain", "badge-warn", "badge-ok
         {t.soon.map((s) => (
           <div class="flex gap-3 rounded-card border border-dashed border-rule-strong p-4">
             <div>
-              <div class="flex items-center gap-2"><h3 class="text-[15px] font-semibold text-ink">{s.title}</h3><span class="badge badge-plain">{t.soonBadge}</span></div>
+              <div class="flex items-center gap-2"><h3 class="text-[15px] font-semibold text-ink">{s.title}</h3><span class="badge badge-soon">{t.soonBadge}</span></div>
               <p class="mt-1 text-[13px] text-muted">{s.body}</p>
             </div>
           </div>

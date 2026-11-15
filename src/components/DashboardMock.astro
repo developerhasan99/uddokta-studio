@@ -29,9 +29,9 @@ const t = {
   },
   en: {
     label: `${BRAND.en} dashboard home page, with sample data`,
-    nav: ["Home", "Orders", "Products", "Customers", "Discounts", "Media", "Reports"],
+    nav: ["Home", "Orders", "Products", "Customers", "Discounts", "Media", "Analytics"],
     channelsTitle: "Sales channels", channels: ["Landing pages", "Online store"], settings: "Settings",
-    title: "Home", subtitle: "Store setup steps and sales at a glance.", sample: "Sample data",
+    title: "Home", subtitle: "Steps to open your store, and your sales.", sample: "Sample data",
     stats: [["Today's orders", "24"], ["Sales", "৳38,450"], ["Delivery rate", "87%"], ["Profit", "৳11,200"]],
     recent: "Recent orders", all: "View all",
     orders: [
@@ -51,7 +51,7 @@ const orders = t.orders.map(([no, name, item, total, status], i) => ({ no, name,
   <div class="flex gap-2" aria-hidden="true">
     <aside class="hidden md:flex w-[168px] shrink-0 flex-col py-2 px-1.5 text-[12.5px] text-frame-muted">
       <div class="flex items-center gap-2 px-2 pb-3 text-frame-ink font-semibold text-[14px]">
-        <img src="/favicon.svg" width="20" height="20" alt="" /> {BRAND[lang]}
+        <img src="/favicon.png" width="20" height="20" alt="" /> {BRAND[lang]}
       </div>
       {nav.map((n) => (
         <div class={`flex items-center gap-2 h-[30px] px-2 rounded-[6px] ${n.active ? "bg-frame-3 text-frame-ink" : ""}`}>

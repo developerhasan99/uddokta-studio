@@ -3,7 +3,11 @@ import { BRAND, type Lang } from "../site";
 interface Props { dark?: boolean; lang?: Lang }
 const { dark = false, lang = "bn" } = Astro.props;
 ---
-<a href={lang === "en" ? "/en/" : "/"} class={`inline-flex items-center gap-2 font-semibold text-[17px] no-underline ${dark ? "text-frame-ink" : "text-ink"}`}>
-  <img src="/favicon.svg" width="28" height="28" alt="" />
-  {BRAND[lang]}
+<a href={lang === "en" ? "/en/" : "/"} class="inline-flex items-center gap-2 font-semibold text-[17px] no-underline text-frame-ink">
+  {dark
+    ? <Fragment><img src="/favicon.png" width="28" height="28" alt="" />{BRAND[lang]}</Fragment>
+    /* The wordmark's text is near-black, so it is used only on light backgrounds. */
+    : lang === "en"
+      ? <img src="/logo-en.svg" width="124" height="38" alt={BRAND.en} class="h-[38px] w-auto" />
+      : <img src="/logo.svg" width="92" height="38" alt={BRAND.bn} class="h-[38px] w-auto" />}
 </a>

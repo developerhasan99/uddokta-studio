@@ -18,10 +18,12 @@ const links = [
   { name: t.blog, href: "/blog" },
 ];
 
-// Language switch: go to this page's translation, or the other language's home page.
-const other: Lang = lang === "en" ? "bn" : "en";
-const switchHref = alternates[other] ?? (other === "en" ? "/en/" : "/");
-const switchLabel = other === "en" ? "English" : "বাংলা";
+// Language switch: each option goes to this page's translation, or that language's home page.
+const langs = [
+  { code: "en" as Lang, short: "EN", name: "English", href: alternates.en ?? "/en/" },
+  { code: "bn" as Lang, short: "বাং", name: "বাংলা", href: alternates.bn ?? "/" },
+];
+const other = langs.find((l) => l.code !== lang)!;
 ---
 <header class="sticky top-0 z-50 bg-paper border-b border-rule">
   <div class="section h-16 flex items-center justify-between gap-6">
@@ -29,8 +31,13 @@ const switchLabel = other === "en" ? "English" : "বাংলা";
     <nav class="hidden md:flex items-center gap-7" aria-label={t.nav}>
       {links.map((l) => <a href={l.href} class="text-sm font-medium text-ink-2 hover:text-primary no-underline">{l.name}</a>)}
     </nav>
+    <div class="flex items-center gap-2">
+    <a href={other.href} hreflang={other.code} lang={other.code} aria-label={other.name} title={other.name} class="group/lang inline-flex items-center rounded-full bg-paper-3 p-0.5 text-[12px] font-semibold leading-none no-underline" data-lang-switch>
+      {langs.map((l) => (
+        <span aria-hidden="true" class={`inline-flex items-center h-6 px-2.5 rounded-full transition-colors ${l.code === lang ? "bg-paper text-ink shadow-sm" : "text-muted group-hover/lang:text-ink"}`}>{l.short}</span>
+      ))}
+    </a>
     <div class="hidden md:flex items-center gap-2">
-      <a href={switchHref} hreflang={other} lang={other} class="btn btn-sm" data-lang-switch><Icon name="globe" size={15} /> {switchLabel}</a>
       <a href={LOGIN_URL} class="btn btn-sm">{t.login}</a>
       <a href={SIGNUP_URL} class="btn btn-sm btn-primary">{t.signup}</a>
     </div>
@@ -44,12 +51,12 @@ const switchLabel = other === "en" ? "English" : "বাংলা";
           {links.map((l) => <a href={l.href} class="py-2.5 text-[15px] font-medium text-ink no-underline border-b border-rule last:border-0">{l.name}</a>)}
         </nav>
         <div class="grid grid-cols-2 gap-2 pt-2">
-          <a href={switchHref} hreflang={other} lang={other} class="btn btn-sm col-span-2" data-lang-switch><Icon name="globe" size={15} /> {switchLabel}</a>
           <a href={LOGIN_URL} class="btn btn-sm">{t.login}</a>
           <a href={SIGNUP_URL} class="btn btn-sm btn-primary">{t.signup}</a>
         </div>
       </div>
     </details>
+    </div>
   </div>
 </header>
 <script>
