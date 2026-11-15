@@ -1,9 +1,9 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 
-// The agency pages were retired when the site became the Uddokta product site.
+// The agency pages were retired when the site became the Uddokta Commerce product site.
 export default defineConfig({
-  site: "https://uddokta.studio",
+  site: "https://uddokta.co",
   integrations: [tailwind()],
   redirects: {
     "/about": "/",

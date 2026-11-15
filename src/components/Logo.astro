@@ -1,8 +1,9 @@
 ---
-interface Props { dark?: boolean }
-const { dark = false } = Astro.props;
+import { BRAND, type Lang } from "../site";
+interface Props { dark?: boolean; lang?: Lang }
+const { dark = false, lang = "bn" } = Astro.props;
 ---
-<a href="/" class={`inline-flex items-center gap-2 font-semibold text-[17px] no-underline ${dark ? "text-frame-ink" : "text-ink"}`}>
+<a href={lang === "en" ? "/en/" : "/"} class={`inline-flex items-center gap-2 font-semibold text-[17px] no-underline ${dark ? "text-frame-ink" : "text-ink"}`}>
   <img src="/favicon.svg" width="28" height="28" alt="" />
-  উদ্যোক্তা স্টুডিও
+  {BRAND[lang]}
 </a>
