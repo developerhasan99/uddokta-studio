@@ -105,7 +105,7 @@ const home = lang === "en" ? "/en/" : "/";
             <span class="text-[34px] font-bold tracking-tight leading-none">{price(p.price)}</span>
             <span class="text-sm text-muted">{p.price ? t.perMonth : t.forever}</span>
           </p>
-          <a href={SIGNUP_URL} class={`btn mt-5 w-full ${p.popular || p.price === 0 ? "btn-primary" : ""}`}>{p.price ? t.start : t.startFree}</a>
+          <a href={SIGNUP_URL} class={`btn mt-5 w-full ${p.popular ? "btn-primary" : ""}`}>{p.price ? t.start : t.startFree}</a>
           <dl class="mt-6 space-y-2 text-sm">
             {[[t.products, limit(p.products)], [t.landingPages, limit(p.landingPages)], [t.team, limit(p.team)], [t.storage, storage(p.storageMb, lang)]].map(([k, v]) => (
               <div class="flex justify-between gap-3 border-b border-rule pb-2"><dt class="text-muted">{k}</dt><dd class="font-semibold">{v}</dd></div>
