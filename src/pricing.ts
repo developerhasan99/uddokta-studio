@@ -33,7 +33,7 @@ export const plans: Plan[] = [
     name: { bn: "স্টার্টার", en: "Starter" },
     tagline: { bn: "নিয়মিত অর্ডার আসা নতুন ব্যবসার জন্য", en: "For new businesses with regular orders" },
     price: 499, products: 200, landingPages: 15, team: 3, storageMb: 2048,
-    tools: ["onlineStore", "courierBooking", "discounts", "fakeOrderProtection", "incompleteOrders", "repeatSales", "adTracking"],
+    tools: ["onlineStore", "customDomain", "courierBooking", "discounts", "fakeOrderProtection", "incompleteOrders", "repeatSales", "adTracking"],
   },
   {
     id: "growth",
