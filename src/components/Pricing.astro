@@ -33,7 +33,7 @@ const t = {
       { title: "আমরা প্ল্যান চালু করে দিই", body: "পেমেন্ট মিলিয়ে প্ল্যান চালু করি, বিলিং পেজে পরিশোধের তারিখ দেখাবে। মেয়াদ শেষে আবার পেমেন্ট করলে চলতে থাকে।" },
     ],
     payLead: "কার্ড লাগবে না। দেশের চেনা উপায়ে পেমেন্ট করুন, আমরা মিলিয়ে প্ল্যান চালু করে দিই।",
-    payWith: "পেমেন্ট করুন", payFacts: ["কার্ড লাগবে না", "প্রতি অর্ডারে কোনো কমিশন নেই", "যখন খুশি প্ল্যান বদলান"], bank: "ব্যাংক ট্রান্সফার", bkash: "বিকাশ", nagad: "নগদ",
+    payWith: "পেমেন্ট করুন", bank: "ব্যাংক ট্রান্সফার", bkash: "বিকাশ", nagad: "নগদ",
     faqEyebrow: "প্রশ্ন ও উত্তর", faqTitle: "দাম নিয়ে সাধারণ প্রশ্ন",
     faqs: [
       { q: "প্রতি অর্ডারে কি কমিশন বা চার্জ কাটা হয়?", a: "না। যত অর্ডারই আসুক, শুধু প্ল্যানের মাসিক দাম। অর্ডারের টাকা কুরিয়ার থেকে সরাসরি আপনার কাছে যায়।" },
@@ -67,7 +67,7 @@ const t = {
       { title: "We turn your plan on", body: "We match your payment and switch your plan on; Billing shows the paid-until date. Pay again when it ends to keep going." },
     ],
     payLead: "No card needed. Pay the way you already do, and we match it and switch your plan on.",
-    payWith: "Pay with", payFacts: ["No card needed", "No commission on orders", "Change plan any time"], bank: "Bank transfer", bkash: "bKash", nagad: "Nagad",
+    payWith: "Pay with", bank: "Bank transfer", bkash: "bKash", nagad: "Nagad",
     faqEyebrow: "FAQ", faqTitle: "Common questions about pricing",
     faqs: [
       { q: "Do you take a commission or fee per order?", a: "No. However many orders you get, you pay only the plan's monthly price. Order money goes from the courier straight to you." },
@@ -202,18 +202,14 @@ const home = lang === "en" ? "/en/" : "/";
             </div>
             <h3 class="mt-5 text-[17px] font-semibold">{s.title}</h3>
             <p class="mt-2 text-sm text-muted leading-relaxed">{s.body}</p>
+            {i === 1 && (
+              <ul class="mt-4 flex flex-wrap gap-2" aria-label={t.payWith}>
+                {[t.bkash, t.nagad, t.bank].map((m) => <li class="inline-flex items-center h-7 px-3 rounded-full bg-paper-2 border border-rule text-[13px] font-medium">{m}</li>)}
+              </ul>
+            )}
           </li>
         ))}
       </ol>
-      <div class="mt-4 card bg-paper-2 px-6 py-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-        <div class="flex flex-wrap items-center gap-2 text-sm">
-          <span class="font-semibold mr-1">{t.payWith}</span>
-          {[t.bkash, t.nagad, t.bank].map((m) => <span class="inline-flex items-center h-7 px-3 rounded-full bg-paper border border-rule text-[13px] font-medium">{m}</span>)}
-        </div>
-        <ul class="flex flex-wrap gap-x-5 gap-y-1.5 text-[13px] text-ink-2">
-          {t.payFacts.map((f) => <li class="inline-flex items-center gap-1.5"><Icon name="check" size={14} class="text-primary" />{f}</li>)}
-        </ul>
-      </div>
     </div>
   </section>
 
