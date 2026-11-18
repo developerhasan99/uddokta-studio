@@ -1,0 +1,254 @@
+---
+// The pricing page. src/pages/pricing.astro renders it in Bangla, src/pages/en/pricing.astro in English.
+// Plans come from src/pricing.ts, which mirrors the public plans in the Uddokta console.
+import Layout from "../layouts/Layout.astro";
+import Icon from "./Icon.astro";
+import { SIGNUP_URL, WHATSAPP_URL, BRAND, type Lang } from "../site";
+import { plans, tools, included, num, storage } from "../pricing";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const L = (p: { bn: string; en: string }) => p[lang];
+
+const t = {
+  bn: {
+    title: `দাম ও প্ল্যান | ${BRAND.bn}`,
+    description: "ফ্রিতে শুরু করুন, ব্যবসা বাড়লে প্ল্যান বাড়ান। প্রতি অর্ডারে কোনো কমিশন নেই। বিকাশ, নগদ বা ব্যাংকে মাসিক পেমেন্ট।",
+    eyebrow: "দাম ও প্ল্যান",
+    heroA: "ফ্রিতে শুরু করুন,", heroB: "ব্যবসা বাড়লে প্ল্যান বাড়ান।",
+    lead: "প্রতি অর্ডারে কোনো কমিশন নেই, লুকানো খরচ নেই। বিকাশ, নগদ বা ব্যাংকে মাসে মাসে পেমেন্ট করুন, যখন খুশি প্ল্যান বদলান।",
+    perMonth: "/ মাস", free: "ফ্রি", forever: "সবসময় ফ্রি",
+    startFree: "ফ্রিতে শুরু করুন", start: "শুরু করুন", popular: "সবচেয়ে জনপ্রিয়",
+    startNote: "ফ্রিতে অ্যাকাউন্ট খুলুন, পরে ড্যাশবোর্ডের বিলিং থেকে প্ল্যান নিন।",
+    products: "পণ্য", landingPages: "ল্যান্ডিং পেজ", team: "টিমের সদস্য", storage: "মিডিয়ার জায়গা", unlimited: "সীমাহীন",
+    toolsIn: "যা যা আছে", allTools: "সব টুল",
+    includedTitle: "প্রতিটি প্ল্যানে, ফ্রিতেও",
+    compareEyebrow: "বিস্তারিত তুলনা", compareTitle: "কোন প্ল্যানে কী আছে",
+    compareLead: "সীমা প্রতিটি দোকানের জন্য। ড্যাশবোর্ডে যে টুল আপনার প্ল্যানে নেই, তাতে তালা দেখাবে।",
+    feature: "ফিচার", limits: "সীমা", toolsHead: "টুল", yes: "আছে", no: "নেই",
+    payEyebrow: "পেমেন্ট", payTitle: "কীভাবে পেমেন্ট করবেন",
+    paySteps: [
+      { title: "ফ্রিতে অ্যাকাউন্ট খুলুন", body: "কোনো কার্ড বা পেমেন্ট লাগবে না। দোকান খুলে পণ্য আর ল্যান্ডিং পেজ বানানো শুরু করুন।" },
+      { title: "বিলিং থেকে প্ল্যান বেছে পেমেন্ট করুন", body: "ড্যাশবোর্ডের সেটিংস › বিলিং-এ বিকাশ, নগদ আর ব্যাংকের তথ্য পাবেন। রেফারেন্সে দোকানের ঠিকানা লিখুন।" },
+      { title: "আমরা প্ল্যান চালু করে দিই", body: "পেমেন্ট মিলিয়ে প্ল্যান চালু করি, বিলিং পেজে পরিশোধের তারিখ দেখাবে। মেয়াদ শেষে আবার পেমেন্ট করলে চলতে থাকে।" },
+    ],
+    endsTitle: "পেমেন্ট না করলে কী হয়?",
+    endsBody: "মেয়াদ শেষে দোকান ফ্রি প্ল্যানে চলে যায়। কোনো তথ্য মুছে যায় না: পণ্য, অর্ডার, পেজ সব থাকে। ল্যান্ডিং পেজ অর্ডার নিতেই থাকে, শুধু ফ্রিতে না থাকা টুলগুলো আবার পেমেন্ট না করা পর্যন্ত বন্ধ থাকে।",
+    customTitle: "আরও বেশি লাগবে?",
+    customBody: "অনেক পণ্য, বেশি জায়গা, বড় টিম বা একাধিক ব্র্যান্ড থাকলে আপনার জন্য আলাদা প্ল্যান বানিয়ে দেব: কী কী লাগবে আর দাম, আপনার মতো করে।",
+    customCta: "হোয়াটসঅ্যাপে কথা বলুন",
+    customText: "আসসালামু আলাইকুম, আমার দোকানের জন্য কাস্টম প্ল্যান সম্পর্কে জানতে চাই।",
+    faqEyebrow: "প্রশ্ন ও উত্তর", faqTitle: "দাম নিয়ে সাধারণ প্রশ্ন",
+    faqs: [
+      { q: "প্রতি অর্ডারে কি কমিশন বা চার্জ কাটা হয়?", a: "না। যত অর্ডারই আসুক, শুধু প্ল্যানের মাসিক দাম। অর্ডারের টাকা কুরিয়ার থেকে সরাসরি আপনার কাছে যায়।" },
+      { q: "কীভাবে পেমেন্ট করব?", a: "বিকাশ, নগদ বা ব্যাংক ট্রান্সফারে। পুরো তথ্য ড্যাশবোর্ডের সেটিংস › বিলিং-এ আছে। কার্ড লাগবে না।" },
+      { q: "পরে কি প্ল্যান বদলানো যাবে?", a: "হ্যাঁ, যখন খুশি। বড় প্ল্যানে গেলে নতুন সীমা আর টুল সঙ্গে সঙ্গে চালু হয়। ছোট প্ল্যানে গেলে তথ্য থাকে, শুধু সীমার বেশি নতুন কিছু যোগ করা যায় না।" },
+      { q: "ফ্রি প্ল্যান কি সত্যিই ফ্রি?", a: "হ্যাঁ, কোনো সময়সীমা নেই। ল্যান্ডিং পেজ, অর্ডার আর ভুয়া অর্ডার সুরক্ষা দিয়ে বিক্রি শুরু করুন, প্রস্তুত হলে প্ল্যান নিন।" },
+      { q: "সীমা কি দোকান প্রতি না অ্যাকাউন্ট প্রতি?", a: "দোকান প্রতি। একটি অ্যাকাউন্ট দিয়ে একাধিক দোকান চালালে প্রতিটি দোকানের নিজের প্ল্যান থাকে।" },
+    ],
+    ctaTitle: "আজই ফ্রিতে বিক্রি শুরু করুন", ctaBody: "অ্যাকাউন্ট খুলতে এক মিনিট লাগে। কার্ড লাগবে না।",
+  },
+  en: {
+    title: `Pricing and plans | ${BRAND.en}`,
+    description: "Start free, upgrade as your business grows. No commission on orders. Pay monthly by bKash, Nagad or bank.",
+    eyebrow: "Pricing and plans",
+    heroA: "Start free,", heroB: "upgrade as you grow.",
+    lead: "No commission on orders and no hidden costs. Pay month by month by bKash, Nagad or bank transfer, and change plan whenever you like.",
+    perMonth: "/ month", free: "Free", forever: "Free forever",
+    startFree: "Start free", start: "Get started", popular: "Most popular",
+    startNote: "Open a free account, then pick a plan from Billing in your dashboard.",
+    products: "Products", landingPages: "Landing pages", team: "Team members", storage: "Media storage", unlimited: "Unlimited",
+    toolsIn: "What's included", allTools: "All tools",
+    includedTitle: "In every plan, Free included",
+    compareEyebrow: "Full comparison", compareTitle: "What each plan includes",
+    compareLead: "Limits apply per store. In the dashboard, tools outside your plan show a lock.",
+    feature: "Feature", limits: "Limits", toolsHead: "Tools", yes: "Included", no: "Not included",
+    payEyebrow: "Paying", payTitle: "How paying works",
+    paySteps: [
+      { title: "Open a free account", body: "No card or payment needed. Create your store and start adding products and landing pages." },
+      { title: "Pick a plan in Billing and pay", body: "Settings › Billing in your dashboard shows our bKash, Nagad and bank details. Use your store address as the reference." },
+      { title: "We turn your plan on", body: "We match your payment and switch your plan on; Billing shows the paid-until date. Pay again when it ends to keep going." },
+    ],
+    endsTitle: "What if I don't renew?",
+    endsBody: "When a paid plan ends, the store moves to the Free plan. Nothing is deleted: products, orders and pages all stay. Landing pages keep taking orders; only tools outside Free pause until you pay again.",
+    customTitle: "Need more?",
+    customBody: "With a large catalogue, more storage, a bigger team or several brands, we'll make a plan just for you: the tools you need, at a price agreed with you.",
+    customCta: "Chat on WhatsApp",
+    customText: "Hi, I'd like to know about a custom plan for my store.",
+    faqEyebrow: "FAQ", faqTitle: "Common questions about pricing",
+    faqs: [
+      { q: "Do you take a commission or fee per order?", a: "No. However many orders you get, you pay only the plan's monthly price. Order money goes from the courier straight to you." },
+      { q: "How do I pay?", a: "By bKash, Nagad or bank transfer. The details are in Settings › Billing in your dashboard. No card needed." },
+      { q: "Can I change plan later?", a: "Yes, any time. Moving up turns the new limits and tools on at once. Moving down keeps your data; you just can't add more than the new limits." },
+      { q: "Is the Free plan really free?", a: "Yes, with no time limit. Start selling with landing pages, orders and fake-order protection, and take a plan when you're ready." },
+      { q: "Are the limits per store or per account?", a: "Per store. If one account runs several stores, each store has its own plan." },
+    ],
+    ctaTitle: "Start selling free today", ctaBody: "Opening an account takes a minute. No card needed.",
+  },
+}[lang];
+
+const price = (n: number) => (n ? `৳${num(n, lang)}` : t.free);
+const limit = (n: number | null) => (n === null ? t.unlimited : num(n, lang));
+const home = lang === "en" ? "/en/" : "/";
+---
+<Layout title={t.title} description={t.description} lang={lang} alternates={{ bn: "/pricing", en: "/en/pricing" }}>
+  <section class="pt-14 sm:pt-20 pb-10">
+    <div class="section text-center">
+      <p class="eyebrow">{t.eyebrow}</p>
+      <h1 class="mt-3 text-[32px] sm:text-[48px] leading-[1.15] font-bold tracking-tight">{t.heroA}<br class="hidden sm:block" /> <span class="text-primary">{t.heroB}</span></h1>
+      <p class="section-lead mx-auto">{t.lead}</p>
+    </div>
+  </section>
+
+  <section class="pb-16" aria-label={t.eyebrow}>
+    <div class="section grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {plans.map((p) => (
+        <article class={`card relative flex flex-col p-6 ${p.popular ? "border-primary ring-1 ring-primary" : ""}`}>
+          {p.popular && <span class="badge badge-ok absolute -top-2.5 left-6">{t.popular}</span>}
+          <h2 class="text-lg font-bold">{L(p.name)}</h2>
+          <p class="mt-1 text-[13px] leading-[1.6] text-muted min-h-[3.2em]">{L(p.tagline)}</p>
+          <p class="mt-5 flex items-baseline gap-1.5">
+            <span class="text-[34px] font-bold tracking-tight leading-none">{price(p.price)}</span>
+            <span class="text-sm text-muted">{p.price ? t.perMonth : t.forever}</span>
+          </p>
+          <a href={SIGNUP_URL} class={`btn mt-5 w-full ${p.popular || p.price === 0 ? "btn-primary" : ""}`}>{p.price ? t.start : t.startFree}</a>
+          <dl class="mt-6 space-y-2 text-sm">
+            {[[t.products, limit(p.products)], [t.landingPages, limit(p.landingPages)], [t.team, limit(p.team)], [t.storage, storage(p.storageMb, lang)]].map(([k, v]) => (
+              <div class="flex justify-between gap-3 border-b border-rule pb-2"><dt class="text-muted">{k}</dt><dd class="font-semibold">{v}</dd></div>
+            ))}
+          </dl>
+          <p class="mt-5 text-[13px] font-semibold">{p.tools.length === tools.length ? t.allTools : t.toolsIn}</p>
+          <ul class="mt-2 space-y-1.5 text-[13px]">
+            {tools.map((tool) => (
+              <li class={`flex items-start gap-2 ${p.tools.includes(tool.key) ? "text-ink" : "text-muted line-through decoration-rule-strong"}`}>
+                <Icon name={p.tools.includes(tool.key) ? "check" : "close"} size={14} class={`mt-[3px] shrink-0 ${p.tools.includes(tool.key) ? "text-primary" : "text-muted"}`} />
+                <span>{L(tool.name)}<span class="sr-only">: {p.tools.includes(tool.key) ? t.yes : t.no}</span></span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+    <p class="section mt-5 text-center text-[13px] text-muted">{t.startNote}</p>
+  </section>
+
+  <section class="pb-16">
+    <div class="section">
+      <div class="card p-6 sm:p-8 bg-paper-2">
+        <h2 class="text-lg font-bold">{t.includedTitle}</h2>
+        <ul class="mt-4 grid gap-x-8 gap-y-2.5 sm:grid-cols-2 lg:grid-cols-3 text-sm">
+          {included.map((i) => <li class="flex items-start gap-2"><Icon name="check" size={16} class="mt-[3px] shrink-0 text-primary" />{L(i)}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="compare" class="py-16 sm:py-20 bg-paper-2 border-y border-rule">
+    <div class="section">
+      <p class="eyebrow">{t.compareEyebrow}</p>
+      <h2 class="section-title mt-2">{t.compareTitle}</h2>
+      <p class="section-lead">{t.compareLead}</p>
+      <div class="card mt-8 overflow-x-auto">
+        <table class="w-full min-w-[720px] text-sm border-collapse">
+          <thead>
+            <tr class="bg-paper-2">
+              <th scope="col" class="sticky left-0 bg-paper-2 text-left font-medium text-muted px-5 py-3 w-[34%]">{t.feature}</th>
+              {plans.map((p) => (
+                <th scope="col" class="px-4 py-3 text-center">
+                  <span class="block font-bold text-ink">{L(p.name)}</span>
+                  <span class="block font-normal text-muted text-[13px]">{p.price ? `${price(p.price)} ${t.perMonth}` : t.free}</span>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th colspan={plans.length + 1} scope="colgroup" class="text-left px-5 pt-5 pb-2 text-[13px] font-semibold text-primary">{t.limits}</th></tr>
+            {[[t.products, (p: typeof plans[number]) => limit(p.products)], [t.landingPages, (p: typeof plans[number]) => limit(p.landingPages)], [t.team, (p: typeof plans[number]) => limit(p.team)], [t.storage, (p: typeof plans[number]) => storage(p.storageMb, lang)]].map(([label, value]) => (
+              <tr class="border-t border-rule">
+                <th scope="row" class="sticky left-0 bg-paper text-left font-medium px-5 py-3">{label as string}</th>
+                {plans.map((p) => <td class="px-4 py-3 text-center font-semibold tabular-nums">{(value as (p: typeof plans[number]) => string)(p)}</td>)}
+              </tr>
+            ))}
+            <tr><th colspan={plans.length + 1} scope="colgroup" class="text-left px-5 pt-6 pb-2 text-[13px] font-semibold text-primary border-t border-rule">{t.toolsHead}</th></tr>
+            {tools.map((tool) => (
+              <tr class="border-t border-rule">
+                <th scope="row" class="sticky left-0 bg-paper text-left font-normal px-5 py-3">
+                  <span class="block font-medium">{L(tool.name)}</span>
+                  <span class="block text-[13px] text-muted">{L(tool.about)}</span>
+                </th>
+                {plans.map((p) => (
+                  <td class="px-4 py-3 text-center">
+                    {p.tools.includes(tool.key)
+                      ? <Icon name="check" size={18} class="inline text-primary" />
+                      : <span class="text-rule-strong" aria-hidden="true">—</span>}
+                    <span class="sr-only">{p.tools.includes(tool.key) ? t.yes : t.no}</span>
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20">
+    <div class="section grid gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-7">
+        <p class="eyebrow">{t.payEyebrow}</p>
+        <h2 class="section-title mt-2">{t.payTitle}</h2>
+        <ol class="mt-8 space-y-6">
+          {t.paySteps.map((s, i) => (
+            <li class="flex gap-4">
+              <span class="shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white text-sm font-bold">{num(i + 1, lang)}</span>
+              <div><h3 class="font-semibold">{s.title}</h3><p class="mt-1 text-sm text-muted leading-relaxed">{s.body}</p></div>
+            </li>
+          ))}
+        </ol>
+        <div class="mt-8 rounded-box border border-rule bg-paper-2 p-5">
+          <h3 class="font-semibold">{t.endsTitle}</h3>
+          <p class="mt-1 text-sm text-muted leading-relaxed">{t.endsBody}</p>
+        </div>
+      </div>
+      <aside class="lg:col-span-5">
+        <div class="card p-6 sm:p-8 bg-frame text-frame-muted border-frame">
+          <Icon name="layers" size={22} class="text-frame-active" />
+          <h2 class="mt-3 text-xl font-bold text-frame-ink">{t.customTitle}</h2>
+          <p class="mt-2 text-sm leading-relaxed">{t.customBody}</p>
+          <a href={`${WHATSAPP_URL}?text=${encodeURIComponent(t.customText)}`} target="_blank" rel="noopener" class="btn btn-primary mt-6"><Icon name="message" size={16} />{t.customCta}</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 bg-paper-2 border-y border-rule">
+    <div class="section grid gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <p class="eyebrow">{t.faqEyebrow}</p>
+        <h2 class="section-title mt-2">{t.faqTitle}</h2>
+      </div>
+      <div class="lg:col-span-8 card divide-y divide-rule">
+        {t.faqs.map((f) => (
+          <details class="group px-5">
+            <summary class="list-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4 py-4 cursor-pointer text-[15px] font-semibold text-ink">
+              {f.q}
+              <span class="shrink-0 text-muted transition-transform group-open:rotate-45"><Icon name="close" size={16} class="rotate-45" /></span>
+            </summary>
+            <p class="pb-5 -mt-1 text-[14px] text-muted leading-relaxed">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20">
+    <div class="section text-center">
+      <h2 class="section-title">{t.ctaTitle}</h2>
+      <p class="section-lead mx-auto">{t.ctaBody}</p>
+      <div class="mt-7 flex flex-wrap justify-center gap-3">
+        <a href={SIGNUP_URL} class="btn btn-primary">{t.startFree}<Icon name="arrow" size={16} /></a>
+        <a href={`${home}#features`} class="btn">{lang === "en" ? "See features" : "ফিচার দেখুন"}</a>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -7,13 +7,14 @@ interface Props { lang: Lang; alternates: Partial<Record<Lang, string>> }
 const { lang, alternates } = Astro.props;
 
 const t = {
-  bn: { features: "ফিচার", how: "কীভাবে কাজ করে", faq: "প্রশ্ন ও উত্তর", blog: "ব্লগ", login: "লগইন", signup: "অ্যাকাউন্ট খুলুন", nav: "প্রধান মেনু", mobileNav: "মোবাইল মেনু", menu: "মেনু" },
-  en: { features: "Features", how: "How it works", faq: "FAQ", blog: "Blog", login: "Log in", signup: "Sign up", nav: "Main menu", mobileNav: "Mobile menu", menu: "Menu" },
+  bn: { features: "ফিচার", how: "কীভাবে কাজ করে", pricing: "দাম", faq: "প্রশ্ন ও উত্তর", blog: "ব্লগ", login: "লগইন", signup: "অ্যাকাউন্ট খুলুন", nav: "প্রধান মেনু", mobileNav: "মোবাইল মেনু", menu: "মেনু" },
+  en: { features: "Features", how: "How it works", pricing: "Pricing", faq: "FAQ", blog: "Blog", login: "Log in", signup: "Sign up", nav: "Main menu", mobileNav: "Mobile menu", menu: "Menu" },
 }[lang];
 const home = lang === "en" ? "/en/" : "/";
 const links = [
   { name: t.features, href: `${home}#features` },
   { name: t.how, href: `${home}#how` },
+  { name: t.pricing, href: lang === "en" ? "/en/pricing" : "/pricing" },
   { name: t.faq, href: `${home}#faq` },
   { name: t.blog, href: "/blog" },
 ];

@@ -8,13 +8,13 @@ const { lang } = Astro.props;
 const t = {
   bn: {
     about: "বাংলাদেশের অনলাইন সেলারদের জন্য বাংলায় বানানো কমার্স সফটওয়্যার। ল্যান্ডিং পেজ, ক্যাশ অন ডেলিভারি অর্ডার, কুরিয়ার আর লাভের হিসাব, সব এক জায়গায়।",
-    features: "ফিচার", how: "কীভাবে কাজ করে", faq: "প্রশ্ন ও উত্তর", blog: "ব্লগ", login: "লগইন", signup: "অ্যাকাউন্ট খুলুন",
+    features: "ফিচার", how: "কীভাবে কাজ করে", pricing: "দাম ও প্ল্যান", faq: "প্রশ্ন ও উত্তর", blog: "ব্লগ", login: "লগইন", signup: "অ্যাকাউন্ট খুলুন",
     contact: "যোগাযোগ", whatsapp: "হোয়াটসঅ্যাপে মেসেজ দিন", phone: PHONE,
     copyright: `© ২০২৬ ${BRAND.bn}। সব স্বত্ব সংরক্ষিত।`,
   },
   en: {
     about: "Commerce software built for online sellers in Bangladesh. Landing pages, cash-on-delivery orders, couriers and profit tracking, all in one place.",
-    features: "Features", how: "How it works", faq: "FAQ", blog: "Blog", login: "Log in", signup: "Sign up",
+    features: "Features", how: "How it works", pricing: "Pricing", faq: "FAQ", blog: "Blog", login: "Log in", signup: "Sign up",
     contact: "Contact", whatsapp: "Message us on WhatsApp", phone: "+880 1724-694718",
     copyright: `© 2026 ${BRAND.en}. All rights reserved.`,
   },
@@ -32,6 +32,7 @@ const home = lang === "en" ? "/en/" : "/";
       <ul class="space-y-2.5 text-sm">
         <li><a href={`${home}#features`} class="hover:text-frame-ink no-underline">{t.features}</a></li>
         <li><a href={`${home}#how`} class="hover:text-frame-ink no-underline">{t.how}</a></li>
+        <li><a href={lang === "en" ? "/en/pricing" : "/pricing"} class="hover:text-frame-ink no-underline">{t.pricing}</a></li>
         <li><a href={`${home}#faq`} class="hover:text-frame-ink no-underline">{t.faq}</a></li>
         <li><a href="/blog" class="hover:text-frame-ink no-underline">{t.blog}</a></li>
         <li><a href={LOGIN_URL} class="hover:text-frame-ink no-underline">{t.login}</a></li>
