@@ -80,7 +80,7 @@ const orders = t.orders.map(([no, name, item, total, status], i) => ({ no, name,
             <div class="text-[11.5px] text-muted">{s.label}</div>
             <div class="mt-1 flex items-end justify-between gap-2">
               <div class="text-[16px] sm:text-[18px] font-bold text-ink leading-none">{s.value}</div>
-              <svg width="60" height="22" viewBox="0 0 60 22" class="text-primary shrink-0">
+              <svg width="60" height="22" viewBox="0 0 60 22" class="text-primary min-w-0">
                 <polyline points={s.points} fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" stroke-linecap="round" />
               </svg>
             </div>
@@ -97,8 +97,8 @@ const orders = t.orders.map(([no, name, item, total, status], i) => ({ no, name,
           <tbody>
             {orders.map((o) => (
               <tr class="border-b border-rule last:border-0">
-                <td class="px-3 h-9 font-medium text-ink whitespace-nowrap">{o.no}</td>
-                <td class="px-2 text-ink-2 whitespace-nowrap">{o.name}</td>
+                <td class="px-3 h-9 font-medium text-ink whitespace-nowrap hidden min-[400px]:table-cell">{o.no}</td>
+                <td class="pl-3 pr-2 min-[400px]:pl-2 h-9 text-ink-2 min-[400px]:whitespace-nowrap">{o.name}</td>
                 <td class="px-2 text-muted whitespace-nowrap hidden sm:table-cell">{o.item}</td>
                 <td class="px-2 text-ink whitespace-nowrap text-right">{o.total}</td>
                 <td class="px-3 text-right"><span class={`badge ${o.cls}`}>{o.status}</span></td>
