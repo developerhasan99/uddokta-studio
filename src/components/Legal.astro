@@ -1,0 +1,40 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { legal, legalNames, legalPath, LEGAL_UPDATED, type LegalKey } from "../legal";
+import { BRAND, EMAIL, PHONE, PHONE_TEL, WHATSAPP_URL, type Lang } from "../site";
+
+interface Props { doc: LegalKey; lang: Lang }
+const { doc, lang } = Astro.props;
+const d = legal[doc][lang];
+const t = lang === "bn"
+  ? { updated: "সর্বশেষ হালনাগাদ", contact: "যোগাযোগ", ask: "এই পাতা নিয়ে প্রশ্ন থাকলে লিখুন বা ফোন করুন:", whatsapp: "হোয়াটসঅ্যাপ", phone: PHONE }
+  : { updated: "Last updated", contact: "Contact", ask: "Questions about this page? Write or call:", whatsapp: "WhatsApp", phone: "+880 1724-694718" };
+const keys = Object.keys(legal) as LegalKey[];
+---
+<Layout
+  title={`${d.title} | ${BRAND[lang]}`}
+  description={d.lead}
+  lang={lang}
+  alternates={{ bn: legalPath(doc, "bn"), en: legalPath(doc, "en") }}
+>
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 pt-10 sm:pt-14 pb-16">
+    <nav class="flex flex-wrap gap-2" aria-label={lang === "bn" ? "আইনি পাতা" : "Legal pages"}>
+      {keys.map((k) => (
+        <a href={legalPath(k, lang)} class={`inline-flex items-center h-8 px-3.5 rounded-control border text-[13px] font-medium no-underline ${k === doc ? "bg-primary border-primary text-white" : "border-rule-strong text-ink-2 hover:text-ink"}`} aria-current={k === doc ? "page" : undefined}>{legalNames[k][lang]}</a>
+      ))}
+    </nav>
+    <h1 class="mt-6 text-[28px] sm:text-[40px] font-bold tracking-tight text-ink leading-[1.25]">{d.title}</h1>
+    <p class="mt-2 text-[13px] text-muted">{t.updated}: {LEGAL_UPDATED[lang]}</p>
+    <p class="mt-5 text-[16px] text-ink-2 leading-[1.85]">{d.lead}</p>
+    <div class="article mt-4 text-[16px]">
+      {d.sections.map((s) => (<><h2>{s.h}</h2><Fragment set:html={s.body} /></>))}
+      <h2>{t.contact}</h2>
+      <p>{t.ask}</p>
+      <ul>
+        <li><a href={`mailto:${EMAIL}`}>{EMAIL}</a></li>
+        <li>{t.whatsapp}: <a href={WHATSAPP_URL}>{t.phone}</a></li>
+        <li><a href={`tel:${PHONE_TEL}`}>{t.phone}</a></li>
+      </ul>
+    </div>
+  </article>
+</Layout>

@@ -1,6 +1,7 @@
 ---
 import Logo from "./Logo.astro";
 import Icon from "./Icon.astro";
+import { legal, legalNames, legalPath, type LegalKey } from "../legal";
 import { SIGNUP_URL, LOGIN_URL, PHONE, PHONE_TEL, WHATSAPP_URL, EMAIL, BRAND, type Lang } from "../site";
 
 interface Props { lang: Lang }
@@ -49,6 +50,11 @@ const home = lang === "en" ? "/en/" : "/";
     </div>
   </div>
   <div class="border-t border-frame-rule">
-    <div class="section py-5 text-xs">{t.copyright}</div>
+    <div class="section pt-5 pb-20 text-xs flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
+      <span>{t.copyright}</span>
+      <ul class="flex flex-wrap gap-x-5 gap-y-1">
+        {(Object.keys(legal) as LegalKey[]).map((k) => <li><a href={legalPath(k, lang)} class="hover:text-frame-ink no-underline">{legalNames[k][lang]}</a></li>)}
+      </ul>
+    </div>
   </div>
 </footer>
